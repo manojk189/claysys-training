@@ -1,132 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Draggable Divs Exercise</title>
+  <title>Draggable Divs</title>
   <style>
-    body
-    {
+    body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
       text-align: center;
     }
     header
     {
-      background: #f4f4f4;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
+      background: #f1f1f1;
+      padding: 15px;
+      font-size: 22px;
     }
+
     .container
     {
-      width: 300px;
+      margin: 30px auto;
+      width: 400px;
       height: 200px;
       border: 2px solid #666;
-      margin: 30px auto;
       background: #eee;
-      position: relative; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .draggable-box
+
+    .box 
     {
-      width: 160px;
-      height: 40px;
-      background: #4CAF50;
+      padding: 15px 25px;
       color: white;
-      line-height: 40px;
-      text-align: center;
-      cursor: move;
-      position: absolute;
-      top: 80px;
-      left: 70px;
+      border-radius: 5px;
+      cursor: move; 
     }
-    .draggable-window
-    {
-      width: 200px;
-      height: 50px;
-      background: #2196F3;
-      color: white;
-      line-height: 50px;
-      text-align: center;
-      cursor: move;
-      position: fixed;
-      top: 350px;
-      left: 50px;
+
+    .blue {
+      background: dodgerblue;
+      margin: 20px;
+      display: inline-block;
     }
-    footer
-    {
-      background: #f4f4f4;
-      padding: 15px;
-      margin-top: 50px;
-      font-size: 14px;
-      color: #555;
+
+    .green {
+      background: seagreen;
+    }
+
+    footer {
+      background: #f1f1f1;
+      margin-top: 40px;
+      padding: 10px;
     }
   </style>
 </head>
 <body>
-  <header>
-    Draggable Exercises
-  </header>
-  <main>
-    <div class="container">
-      <div class="draggable-box" id="box1">Drag Me Within Box</div>
-    </div>
-    <div class="draggable-window" id="box2">Drag Me Within Window</div>
-  </main>
-  <footer>
-    © 2024 Draggable Divs Exercise
-  </footer>
-  <script>
-    function makeDraggable(el, container = null) {
-      let isDragging = false;
-      let offsetX, offsetY;
+  <header>Draggable Exercises</header>
 
-      el.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        offsetX = e.clientX - el.getBoundingClientRect().left;
-        offsetY = e.clientY - el.getBoundingClientRect().top;
-      });
+  
+  <div class="container">
+    <div class="box green" draggable="true">Drag Me Within Box</div>
+  </div>
 
-      document.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
+  
+  <div class="box blue" draggable="true">Drag Me Within Window</div>
 
-        let x = e.clientX - offsetX;
-        let y = e.clientY - offsetY;
-
-        if (container) {
-          let rect = container.getBoundingClientRect();
-          let elRect = el.getBoundingClientRect();
-          if (x < rect.left) x = rect.left;
-          if (y < rect.top) y = rect.top;
-          if (x + elRect.width > rect.right) x = rect.right - elRect.width;
-          if (y + elRect.height > rect.bottom) y = rect.bottom - elRect.height;
-          el.style.left = (x - rect.left) + "px";
-          el.style.top = (y - rect.top) + "px";
-        } else
-        {
-          el.style.left = x + "px";
-          el.style.top = y + "px";
-        }
-      });
-
-      document.addEventListener("mouseup", () =>
-      {
-        isDragging = false;
-      });
-    }
-    makeDraggable(document.getElementById("box1"), document.querySelector(".container"));
-    makeDraggable(document.getElementById("box2"));
-  </script>
-
-</body>
-</html>
+  <footer>© 2024 Draggable Divs Exercise</footer>
 </body>
 </html>
