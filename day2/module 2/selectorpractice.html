@@ -5,23 +5,20 @@
     <title>Selector Practice</title>
 </head>
 <style>
-    .king
+    header
     {
         background-color: gainsboro;
-    }
-    .header
-    {
         text-align: center;
-        
-        height: 80px;
-        margin-top: 20px;
-        padding-top: 20px;
     }
-    .nav
+    
+    nav
     {
         background-color: black;
-        height: 30px;
-        
+        text-align: center;
+        color: white;
+        height: 50px;
+        padding-top: 10px;
+       
     }
     .a 
     {
@@ -43,7 +40,7 @@
         padding-left: 20px;
       
     }
-    .para
+    .code
     {
         padding-top: 20px;
         padding-left: 10px;
@@ -57,7 +54,7 @@
     {
         padding-left:10px ;
     }
-     .para1
+     .code1
      {
         padding-left: 25px;
         padding-top: 20px;
@@ -103,7 +100,7 @@
         height: 110px;
         padding-left: 20px;
    }
-   .tan 
+   .s
    {
     background-color:gainsboro ;
     height: 160px;
@@ -129,35 +126,40 @@
      padding: 10px;
      text-align: center;
    }
-   
+   .list 
+   {
+     padding-left: 30px;
+   }
 
 </style>
 <body>
 
-    <header class="king">
-        <h1 class="header">CSS Selectors practice</h1>
-    </header>
-    <nav class="nav">
-        <a class="a">Home</a>
-        <a class="b">About</a>
-        <a class="b">Contact</a>
+    <header >
+        <h1 >CSS Selectors practice</h1>
+         <nav>
+        <a class="list">Home</a>
+        <a class="list">About</a>
+        <a class="list">Services</a>
+        <a class="list">Contact</a>
     </nav>
+    </header>
+   
     <section>
         <div class="box1">
-            <h3 class="para">Universal selector Example</h3>
+            <h3 class="code1">Universal selector Example</h3>
             <p class="v">this paragraph is styled using the universal selector (*) which applies to all elements.</p>
         </div>
     </section>
     <section>
         <div class="box2">
-            <h3 class="para1">Universal selector Example</h3>
+            <h3 class="code1">Type Selector Example</h3>
             <h4 class="v1">Heading and paragaraph</h4>
             <p class="v1">this is an example of the paragaraph styled by the type selector </p>
         </div>
     </section>
     <section>
         <div class="box3">
-            <h3 class="para1">Class Selector Example</h3>
+            <h3 class="code1">Class Selector Example</h3>
             <p class="v1">The section is styled selector name .height</p>
         </div>
     </section>
@@ -169,20 +171,20 @@
     </section>
     <section>
         <div class="box5">
-            <h3 class="para1">Attribute selector example</h3>
+            <h3 class="code1">Attribute selector example</h3>
             <p class="v1">Type your name:</p>
             <input type="text" placeholder="your name" id="s" >
         </div>
     </section>
     <section>
         <div class="box1">
-            <h3 class="para">Descendant selector example</h3>
+            <h3 class="code">Descendant selector example</h3>
             <p class="v">the paragaraph is insidea div and styled by a decendant selector(div.p)</p>
         </div>
     </section>
     <section>
         <div class="box1">
-            <h3 class="para">Child selector example</h3>
+            <h3 class="code">Child selector example</h3>
             <ul>
                 <li>First child item styled using child selector(ul>li) </li>
                 <li>Another Child item in the list</li>
@@ -190,7 +192,7 @@
         </div>
     </section>
     <section >
-        <div class="tan">
+        <div class="s">
            <h3 class="not">Adjacent siblings selector example</h3>
            <h1 class="sum">This is a Heading</h1>
            <p class="sum">this paragaraph is styled as an adjacent siblings to above heading (h2+p)</p>
