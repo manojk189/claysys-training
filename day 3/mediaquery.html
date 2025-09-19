@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Layout with Media Query</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      header h1 {
+        text-align: center;
+        background-color: rgb(35, 161, 35);
+        padding: 15px;
+        margin: 0;
+        color: white;
+        font-weight: lighter;
+      }
+      body {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: 100vh;
+      }
+      main {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-gap: 5px;
+        padding: 5px;
+      }
+      .sidebar {
+        background-color: rgb(207, 207, 207);
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .main-content {
+        background-color: rgb(158, 153, 147);
+        padding: 10px;
+        border-radius: 5px;
+      }
+      footer {
+        text-align: center;
+        background-color: rgb(35, 161, 35);
+        padding: 10px;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 1.2rem;
+        }
+        header nav a {
+          font-size: 0.9rem;
+        }
+        .sidebar,
+        .main-content {
+          font-size: 0.9rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        main {
+          grid-template-columns: 1fr 4fr; 
+        }
+        header h1 {
+          font-size: 2rem;
+        }
+        header nav a {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Grid Layout with Media Query</h1>
+    </header>
+    <main>
+      <aside class="sidebar">Sidebar</aside>
+      <section class="main-content">Main Content Area</section>
+    </main>
+    <footer>© 2025 Grid Layout with Media Query</footer>
+  </body>
+</html>
+
