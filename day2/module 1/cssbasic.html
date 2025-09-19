@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Basics Review</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header
+    {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+    }
+
+    nav
+    {
+      background: #333;
+      text-align: center;
+    }
+
+    nav ul
+    {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: inline-flex;
+    }
+
+    nav ul li
+    {
+      margin: 0;
+    }
+
+    nav ul li a
+    {
+      display: block;
+      padding: 14px 20px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav ul li a:hover
+    {
+      background: #575757;
+    }
+
+    .intro
+    {
+      background:rgb(232, 229, 229);
+      padding: 20px;
+    }
+
+    .intro h2
+    {
+      margin-top: 0;
+    }
+
+    .container
+    {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+      gap: 15px;
+    }
+
+    .box
+    {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      flex: 1;
+      text-align: left;
+    }
+    .examples 
+    {
+      background: #e8e8e8;
+      padding: 20px;
+      margin: 20px;
+    }
+    .examples h3
+    {
+      margin-top: 0;
+    }
+    .pseudo-list li
+    {
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    .pseudo-list li:hover {
+      color: green;
+      font-weight: bold;
+    }
+    .pseudo-text::before
+    {
+      content: "Start: ";
+      color: green;
+      font-weight: bold;
+    }
+
+    .pseudo-text::after
+    {
+      content: " :End";
+      color: green;
+      font-weight: bold;
+    }
+
+    footer
+    {
+      text-align: center;
+      padding: 10px;
+      background: #dfdcdc;
+      margin-top: 20px;
+    }
+    .man
+    {
+       
+        margin-top: 25px;
+
+    }
+  </style>
+</head>
+<body class="man">
+  <header>
+    <h1>CSS Basics Review</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="intro">
+    <h2>Introduction:</h2>
+    <p>This is a brief introduction paragraph that uses different text properties such as font-size, color, and line-height.</p>
+  </section>
+
+  <section class="container">
+    <div class="box">
+      <h3>Box 1: Title</h3>
+      <p><strong>Content 1</strong></p>
+      <p>Background, Borders, Margins, Padding</p>
+    </div>
+    <div class="box">
+      <h3>Box 2: Title</h3>
+      <p><strong>Content 2</strong></p>
+      <p>Background, Borders, Margins, Padding</p>
+    </div>
+    <div class="box">
+      <h3>Box 3: Title</h3>
+      <p><strong>Content 3</strong></p>
+      <p>Background, Borders, Margins, Padding</p>
+    </div>
+  </section>
+
+  <section class="examples">
+    <h3>Pseudo-Classes Example:</h3>
+    <ul class="pseudo-list">
+      <li>Item 1 (hover, active, etc.)</li>
+      <li>Item 2</li>
+    </ul>
+
+    <h3>Pseudo-Elements Example:</h3>
+    <p class="pseudo-text">::before and ::after applied to this paragraph</p>
+  </section>
+
+  <footer>
+    <p>© 2024 CSS Basics Review</p>
+  </footer>
+</body>
+</html>

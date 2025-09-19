@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selector Practice</title>
+</head>
+<style>
+    .king
+    {
+        background-color: gainsboro;
+    }
+    .header
+    {
+        text-align: center;
+        
+        height: 80px;
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+    .nav
+    {
+        background-color: black;
+        height: 30px;
+        
+    }
+    .a 
+    {
+        color: white;
+        padding-left: 45%;
+
+    }
+    .b
+    {
+         color: white;
+        padding-left: 20px;
+
+
+    }
+    .box1
+    {
+        background-color: gainsboro;
+        height: 110px;
+        padding-left: 20px;
+      
+    }
+    .para
+    {
+        padding-top: 20px;
+        padding-left: 10px;
+    }
+    .box2
+    {
+        background-color: gainsboro;
+        height: 140px;
+    }
+    .v 
+    {
+        padding-left:10px ;
+    }
+     .para1
+     {
+        padding-left: 25px;
+        padding-top: 20px;
+     }
+     .v1
+    {
+        padding-left:25px ;
+    }
+    .box3
+    {
+        background-color: yellow;
+        height: 100px;
+    }
+    .box4 
+    {
+        background-color:gainsboro;
+        height: 110px;
+    }
+    .p4
+    {
+        padding-top: 20px;
+        padding-left: 25px;
+        color: red;
+    }
+.v4
+{
+    padding-left: 25px;
+        color: red;
+}
+#s 
+{
+    width: 80%;
+    margin-left: 25px;
+}
+.box5
+    {
+        background-color:gainsboro;
+        height: 150px;
+    }
+   .box10 
+   {
+     background-color: gainsboro;
+        height: 110px;
+        padding-left: 20px;
+   }
+   .tan 
+   {
+    background-color:gainsboro ;
+    height: 160px;
+   }
+   .sum 
+   {
+    padding-left: 25px;
+   }
+   .not
+   {
+    padding-left: 25px;
+    padding-top: 20px;
+   }
+   .run
+   {
+    background-color:gainsboro ;
+    height: 190px;
+   }
+   .footer 
+   {
+     margin-top: 30px;
+     background-color: #eee;
+     padding: 10px;
+     text-align: center;
+   }
+   
+
+</style>
+<body>
+
+    <header class="king">
+        <h1 class="header">CSS Selectors practice</h1>
+    </header>
+    <nav class="nav">
+        <a class="a">Home</a>
+        <a class="b">About</a>
+        <a class="b">Contact</a>
+    </nav>
+    <section>
+        <div class="box1">
+            <h3 class="para">Universal selector Example</h3>
+            <p class="v">this paragraph is styled using the universal selector (*) which applies to all elements.</p>
+        </div>
+    </section>
+    <section>
+        <div class="box2">
+            <h3 class="para1">Universal selector Example</h3>
+            <h4 class="v1">Heading and paragaraph</h4>
+            <p class="v1">this is an example of the paragaraph styled by the type selector </p>
+        </div>
+    </section>
+    <section>
+        <div class="box3">
+            <h3 class="para1">Class Selector Example</h3>
+            <p class="v1">The section is styled selector name .height</p>
+        </div>
+    </section>
+    <section>
+        <div class="box4">
+            <h3 class="p4">Id Selector example</h3>
+            <p class="v4">this section is using ID Selector named #unique</p>
+        </div>
+    </section>
+    <section>
+        <div class="box5">
+            <h3 class="para1">Attribute selector example</h3>
+            <p class="v1">Type your name:</p>
+            <input type="text" placeholder="your name" id="s" >
+        </div>
+    </section>
+    <section>
+        <div class="box1">
+            <h3 class="para">Descendant selector example</h3>
+            <p class="v">the paragaraph is insidea div and styled by a decendant selector(div.p)</p>
+        </div>
+    </section>
+    <section>
+        <div class="box1">
+            <h3 class="para">Child selector example</h3>
+            <ul>
+                <li>First child item styled using child selector(ul>li) </li>
+                <li>Another Child item in the list</li>
+            </ul>
+        </div>
+    </section>
+    <section >
+        <div class="tan">
+           <h3 class="not">Adjacent siblings selector example</h3>
+           <h1 class="sum">This is a Heading</h1>
+           <p class="sum">this paragaraph is styled as an adjacent siblings to above heading (h2+p)</p>
+
+        </div>
+    </section>
+    <section>
+        <div class="run">
+            <h3 class="not">General Sibling Selector Example</h3>
+            <h2 class="sum">Another Heading</h2>
+            <p class="sum">this paragaraph is sstyled as as a general sibling to the above heading(h2-p) </p>
+            <p class="sum">Another sibling paragraph styled ths same way</p>
+        </div>
+    </section>
+   <footer class="footer">
+    © 2024 Training Website
+  </footer>
+</body>
+</html>
