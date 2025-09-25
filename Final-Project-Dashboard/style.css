@@ -361,6 +361,14 @@ margin: 0 20px;
         background-color: white;
         font-size: 20px;
       }
+   .profile .settings {
+        font-size: 15px;
+        background: white;
+        padding: 3px;
+        border-radius: 60%;
+        cursor: pointer;
+        padding-top: 5px;
+      }
 
   .sidebar {
     width: 100%;
@@ -487,4 +495,5 @@ margin: 0 20px;
   }
 }
 }
+
   
