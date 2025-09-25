@@ -8,6 +8,7 @@
 .pic {
   width: 120px;
   height: 30px;
+  
 }
 
 body {
@@ -93,6 +94,7 @@ body {
 #a:active,
 #a:hover {
   background-color: rgb(238, 102, 102);
+
 }
 
 .status.pending,
@@ -100,11 +102,10 @@ body {
   background-color: yellow;
 }
 
-.nav a.active,
+.nav a:active,
 .nav a:hover {
   background: rgb(150, 189, 204);
   color: white;
-  
 }
 
 .main {
@@ -142,12 +143,14 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;
+  
 
 }
 
 .order-header {
   justify-content: space-between;
   margin-bottom: 15px;
+
 }
 
 .disk {
@@ -189,8 +192,8 @@ body {
 #m {
 
   background-color: skyblue;
-  margin-right: 8px;
   border-radius: 5px;
+  margin-right: 8px;
 
 
 }
@@ -248,7 +251,6 @@ table td {
 
 .btns .cancel:hover {
   background: #4292c7;
-   
 }
 
 .btns .pickup {
@@ -424,7 +426,7 @@ table td {
     width: 60px;
     height: 20px;
     position: absolute;
-    left: 75%;
+    left: 70%;
   }
 
   .nav a {
@@ -469,14 +471,15 @@ table td {
   #set {
     background-color: rgb(188, 222, 236);
     border: 1px solid rgb(49, 186, 240);
-    font-size: 13px;
+    font-size: 8px;
     border-radius: 10px;
   }
 
   .profile img {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
+  
   }
 
   .order-top {
@@ -487,6 +490,15 @@ table td {
     background-color: rgb(180, 225, 180);
     font-size: 8px;
   }
+  .order-1 {
+  display: flex;
+  justify-content: space-between;
+  padding: 1px;
+  background: #f9f9f9;
+  background-color: white;
+  font-size: 8px;
+}
+
 
   /*  Tablets (601px – 900px) */
   @media screen and (min-width: 601px) and (max-width: 900px) {
@@ -544,4 +556,3 @@ table td {
     }
   }
 }
-
