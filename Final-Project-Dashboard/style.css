@@ -84,7 +84,8 @@ body {
   padding: 12px 20px;
   text-decoration: none;
   color: black;
-  border-left: 3px solid transparent;
+  border-radius: 5px;
+  margin-right: 8px;
   transition: 0.3s;
   font-size: 25px;
 }
@@ -103,7 +104,7 @@ body {
 .nav a:hover {
   background: rgb(150, 189, 204);
   color: white;
-  border-radius: 20px;
+  
 }
 
 .main {
@@ -188,8 +189,8 @@ body {
 #m {
 
   background-color: skyblue;
-
-  border-radius: 80px;
+  margin-right: 8px;
+  border-radius: 5px;
 
 
 }
@@ -247,6 +248,7 @@ table td {
 
 .btns .cancel:hover {
   background: #4292c7;
+   
 }
 
 .btns .pickup {
@@ -542,3 +544,4 @@ table td {
     }
   }
 }
+
