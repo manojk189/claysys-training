@@ -1,0 +1,52 @@
+body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .grades-container {
+      border: 1px solid #ccc;
+      padding: 20px 30px;
+      border-radius: 8px;
+      width: 300px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .grades-list {
+      margin-top: 20px;
+    }
+
+    .average {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .out {
+    border: 1px solid blue;
+    padding: 3px;
+    justify-content: space-between;
+}
