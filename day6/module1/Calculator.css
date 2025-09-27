@@ -1,11 +1,9 @@
 .content {
     border: 1px solid black;
-    width: 325px;
-    height: 530px;
+    padding: 5px;
     border-radius: 10px;
     text-align: center;
-    margin-left: 10px;
-    margin-top: 10px;
+   
 }
 
 body {
@@ -36,7 +34,5 @@ label {
 
 .out {
     border: 1px solid rgb(113, 113, 240);
-    width: 345px;
-    height: 550px;
-    border-radius: none;
+    padding: 3px;
 }
