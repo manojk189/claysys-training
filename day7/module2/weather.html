@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="weather.css">
+    <script src="weather.js"></script>
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <div class="out">
+        <div class="weather-container">
+            <h2>Weather Dashboard</h2>
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button id="searchBtn" onclick="getWeather()">Search</button>
+
+            <div class="weather-info">
+                <p><strong>City Name:</strong> <span id="cityName"></span></p>
+                <p><strong>Temperature:</strong> <span id="temperature"></span></p>
+                <p><strong>Humidity:</strong> <span id="humidity"></span></p>
+                <div class="weather-icon">
+                    <strong>Weather Icon:</strong> <br>
+                    <img id="icon" src="" alt="" style="display:none;">
+                </div>
+                <p id="error" style="color:red;"></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
