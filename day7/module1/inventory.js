@@ -65,7 +65,3 @@ function displayInventory() {
     cell3.textContent = product.quantity;
   });
 }
-const p1 = new Product("Product 1", 10, 5);
-const p2 = new Product("Product 2", 15, 3);
-inventory.push(p1, p2);
-displayInventory();
