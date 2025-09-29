@@ -43,6 +43,7 @@ li {
     justify-content: space-between;
     margin-bottom: 10px;
     padding: 5px;
+    border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 li.completed span {
@@ -74,4 +75,5 @@ span.task-text {
     height: auto;
     margin-top: 15%;
     padding: 3px;
+
 }
