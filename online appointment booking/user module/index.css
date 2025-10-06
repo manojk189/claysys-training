@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: url(image/doctor.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 30px;
+    background: #0077ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s ease;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: #005fcc;
+}
+
+.btn.secondary {
+    background: #00b894;
+}
+
+.btn.secondary:hover {
+    background: #009874;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: skyblue;
+    border-right: 3px solid #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3s steps(20, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+
+
+
+/* Mobile Devices (up to 600px) */
+@media screen and (max-width: 600px) {
+    .hero-content h1 {
+        font-size: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 0.5rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .hero-content {
+        padding: 15px;
+        padding-top: 0px;
+    }
+
+    body {
+        height: auto;
+        padding: 20px 0;
+        overflow: auto;
+    }
+
+}
+
+/* Tablets (601px to 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+}
+
+/* Laptops (901px to 1200px) */
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.15rem;
+    }
+
+    .btn {
+        padding: 12px 25px;
+    }
+}
+
+/* Desktops (1201px and above) */
+@media screen and (min-width: 1201px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        padding: 12px 30px;
+    }
+}

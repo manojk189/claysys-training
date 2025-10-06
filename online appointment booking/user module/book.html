@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="booking.css">
+</head>
+
+<body>
+    <header>
+        <h1>Appointment Booking</h1>
+    </header>
+    <nav>
+        <a href="profile.html">Profile</a>
+        <a href="book.html">Booking</a>
+        <a href="manage.html">Management</a>
+        <a href="../Admin module/Admindashboard.html">DashBoard</a>
+    </nav>
+    <h2 class="hos">Jayam Hospital Services are given in below ,Now you can choose your Booking</h2>
+    <div class="login-container">
+        <h2>Book an Appointment</h2>
+        <form id="booking-form">
+            <select id="service" required>
+                <option value="">Select Service</option>
+                <option>pediatrician(Child)</option>
+                <option>Dermatologist(Skin)</option>
+                <option>Cardiologist(Heart)</option>
+                <option>Dental</option>
+            </select>
+            <select id="provider" required>
+                <option value="">Select Provider</option>
+                <option>DR. John Smith</option>
+                <option>DR.Kumar</option>
+                <option>DR.palani</option>
+                <option>DR.Raj</option>
+            </select>
+            <input type="date" id="date" required>
+            <input type="time" id="time" required>
+            <button type="submit">Confirm Booking</button>
+        </form>
+        <div id="booking-confirmation"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

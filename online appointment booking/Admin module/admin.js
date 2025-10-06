@@ -1,0 +1,338 @@
+
+(function bootstrapDemo() {
+  if (!localStorage.getItem('users')) {
+    const sampleUsers = [
+      { id: 1, name: 'Admin User', email: 'admin@demo.com', phone: '', role: 'admin', password: 'admin', status: 'active' },
+      { id: 2, name: 'John Doe', email: 'john@demo.com', phone: '', role: 'user', password: 'john', status: 'active' },
+      { id: 3, name: 'Dr. Smith', email: 'drsmith@demo.com', phone: '', role: 'provider', password: 'doc', status: 'active' }
+    ];
+    localStorage.setItem('users', JSON.stringify(sampleUsers));
+  }
+  if (!localStorage.getItem('services')) {
+    const sampleServices = [
+      { id: 101, name: 'Doctor Consultation', desc: 'General health consultation', duration: 30, price: 25, provider: 'Dr. Smith', availability: [] },
+      { id: 102, name: 'Hair Styling', desc: 'Men & women styling', duration: 45, price: 30, provider: 'Stylist Mary', availability: [] }
+    ];
+    localStorage.setItem('services', JSON.stringify(sampleServices));
+  }
+  if (!localStorage.getItem('appointments')) {
+    const sampleApps = [
+      { id: 201, userId: 2, userName: 'John Doe', serviceId: 101, serviceName: 'Doctor Consultation', provider: 'Dr. Smith', date: '2025-10-05', time: '10:30', status: 'Confirmed' }
+    ];
+    localStorage.setItem('appointments', JSON.stringify(sampleApps));
+  }
+})();
+
+// helpers to read/write
+function read(key) { return JSON.parse(localStorage.getItem(key) || '[]'); }
+function write(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
+
+// ----------------- Dashboard functions -----------------
+function renderDashboard() {
+  const users = read('users');
+  const services = read('services');
+  const appointments = read('appointments');
+
+  // counts
+  document.getElementById('card-users').innerText = users.length;
+  document.getElementById('card-services').innerText = services.length;
+
+  // upcoming next 7 days
+  const now = new Date();
+  const in7 = new Date(); in7.setDate(now.getDate() + 7);
+  const upcoming = appointments.filter(a => {
+    const d = new Date(a.date);
+    return d >= now && d <= in7 && a.status !== 'Cancelled';
+  });
+  document.getElementById('card-appointments').innerText = upcoming.length;
+
+  // recent activity (last 5 appointments + registrations)
+  const recentDiv = document.getElementById('recent-activity');
+  recentDiv.innerHTML = '';
+  const recentUsers = users.slice(-5).reverse();
+  const recentApps = appointments.slice(-5).reverse();
+  let html = '<table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;border:none;color:green;"><thead><tr><th>Name</th><th>Email</th><th>Phone</th></tr></thead><tbody>';
+  if (recentUsers.length === 0) html += '<tr><td colspan="3">No registrations</td></tr>';
+  recentUsers.forEach(u => html += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.phone}</td></tr>`);
+  html += '</tbody></table><strong style="margin-top:8px;display:block">Recent bookings:</strong><table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;color:skyblue;border:none"><thead><tr><th>User</th><th>Service</th><th>Date</th><th>Time</th></tr></thead><tbody>';
+  if (recentApps.length === 0) html += '<tr><td colspan="4">No bookings</td></tr>';
+  recentApps.forEach(a => html += `<tr><td>${a.userName}</td><td>${a.serviceName}</td><td>${a.date}</td><td>${a.time}</td></tr>`);
+  html += '</tbody></table>';
+  recentDiv.innerHTML = html;
+
+}
+
+// quick CSV export for appointments
+function exportAppointmentsCSV() {
+  const apps = read('appointments');
+  if (apps.length === 0) { alert('No appointments to export'); return; }
+  const headers = ['id', 'userName', 'serviceName', 'provider', 'date', 'time', 'status'];
+  const rows = apps.map(a => headers.map(h => `"${(a[h] || '').toString().replace(/"/g, '""')}"`).join(','));
+  const csv = [headers.join(','), ...rows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'appointments.csv'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// generate simple report summary
+function generateReport() {
+  const users = read('users'), services = read('services'), apps = read('appointments');
+  const serviceCounts = {};
+  apps.forEach(a => { serviceCounts[a.serviceName] = (serviceCounts[a.serviceName] || 0) + 1; });
+  let out = `<p><strong>Total users:</strong> ${users.length}</p>`;
+  out += `<p><strong>Total services:</strong> ${services.length}</p>`;
+  out += `<p><strong>Total appointments:</strong> ${apps.length}</p>`;
+  out += '<p><strong>Service popularity:</strong></p><ul>';
+  Object.keys(serviceCounts).forEach(s => out += `<li>${s}: ${serviceCounts[s]}</li>`);
+  out += '</ul>';
+  document.getElementById('report-output').innerHTML = out;
+}
+
+// ----------------- Service Management -----------------
+function initServicePage() {
+  // cache nodes
+  const form = document.getElementById('service-form');
+  const tb = document.getElementById('service-table');
+  const providerSelect = document.getElementById('sv-provider');
+  const svcName = document.getElementById('sv-name');
+
+  // availability helpers
+  let availList = [];
+  const availUL = document.getElementById('availability-list');
+  document.getElementById('add-availability').addEventListener('click', () => {
+    const from = document.getElementById('sv-available-from').value;
+    const to = document.getElementById('sv-available-to').value;
+    const note = document.getElementById('sv-available-note').value;
+    if (!from) { alert('Select at least a from date'); return; }
+    availList.push({ from, to, note });
+    renderAvail();
+    // clear fields
+    document.getElementById('sv-available-from').value = ''; document.getElementById('sv-available-to').value = ''; document.getElementById('sv-available-note').value = '';
+  });
+
+  function renderAvail() {
+    availUL.innerHTML = '';
+    availList.forEach((a, i) => {
+      const li = document.createElement('li');
+      li.innerHTML = `${a.from}${a.to ? (' → ' + a.to) : ''} ${a.note ? (' - ' + a.note) : ''} <button style="margin-left:8px" onclick="removeAvail(${i})">Remove</button>`;
+      availUL.appendChild(li);
+    });
+    window.removeAvail = function (idx) { availList.splice(idx, 1); renderAvail(); };
+  }
+
+  // load providers (from users with role provider)
+  function fillProviders() {
+    const users = read('users');
+    providerSelect.innerHTML = '<option value="">Select main provider (optional)</option>';
+    users.filter(u => u.role === 'provider').forEach(p => {
+      const opt = document.createElement('option'); opt.value = p.name; opt.textContent = p.name;
+      providerSelect.appendChild(opt);
+    });
+  }
+  fillProviders();
+
+  // render services list
+  function renderServices() {
+    const services = read('services');
+    tb.innerHTML = services.map((s, i) => {
+      const availSummary = (s.availability && s.availability.length) ? s.availability.map(a => `${a.from}${a.to ? ('-' + a.to) : ''}${a.note ? (' (' + a.note + ')') : ''}`).join(', ') : '—';
+      return `<tr>
+        <td>${s.name}</td>
+        <td>${s.duration} min</td>
+        <td>$${s.price}</td>
+        <td>${s.provider || '—'}</td>
+        <td>${availSummary}</td>
+        <td class="actions">
+          <button class="edit" onclick="editService(${s.id})">Edit</button>
+          <button class="delete" onclick="deleteService(${s.id})">Delete</button>
+        </td>
+      </tr>`;
+    }).join('');
+  }
+  renderServices();
+
+  // form submit - add service
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const services = read('services');
+    const newService = {
+      id: Date.now(),
+      name: document.getElementById('sv-name').value,
+      desc: document.getElementById('sv-desc').value,
+      duration: parseInt(document.getElementById('sv-duration').value, 10),
+      price: parseFloat(document.getElementById('sv-price').value),
+      provider: document.getElementById('sv-provider').value,
+      availability: availList.slice()
+    };
+    services.push(newService);
+    write('services', services);
+    // reset
+    form.reset();
+    availList = []; renderAvail();
+    renderServices(); fillServiceFilterOptions(); fillProviders();
+    alert('Service added');
+  });
+
+  // clear
+  document.getElementById('clear-service').addEventListener('click', () => { form.reset(); availList = []; renderAvail(); });
+
+  // expose functions to window for edit/delete (used in table)
+  window.editService = function (serviceId) {
+    const services = read('services');
+    const s = services.find(x => x.id === serviceId);
+    if (!s) return alert('Service not found');
+    // simple edit via prompt for demo (you could implement modal)
+    const name = prompt('Service name:', s.name); if (name === null) return;
+    const duration = prompt('Duration (min):', s.duration); if (duration === null) return;
+    const price = prompt('Price:', s.price); if (price === null) return;
+    s.name = name; s.duration = parseInt(duration, 10) || s.duration; s.price = parseFloat(price) || s.price;
+    write('services', services); renderServices(); fillServiceFilterOptions();
+    alert('Service updated');
+  };
+
+  window.deleteService = function (serviceId) {
+    if (!confirm('Delete this service?')) return;
+    let services = read('services'); services = services.filter(s => s.id !== serviceId); write('services', services); renderServices(); fillServiceFilterOptions();
+  };
+
+  // expose helper to refresh provider select if users changed
+  window.refreshProviders = fillProviders;
+  // initial fill service filter on appointments page
+  fillServiceFilterOptions();
+}
+
+// utility to populate service options used by other pages
+function fillServiceFilterOptions() {
+  const services = read('services');
+  // if appointments page exists, populate its select
+  const sel = document.getElementById('filter-service');
+  if (sel) {
+    sel.innerHTML = '<option value="">All services</option>';
+    services.forEach(s => sel.appendChild(Object.assign(document.createElement('option'), { value: s.id, textContent: s.name })));
+  }
+  // also fill any provider select
+  const provSel = document.getElementById('filter-provider');
+  if (provSel) {
+    provSel.innerHTML = '<option value="">All providers</option>';
+    // collect providers from services and users
+    const providers = new Set();
+    services.forEach(s => { if (s.provider) providers.add(s.provider); });
+    providers.forEach(p => provSel.appendChild(Object.assign(document.createElement('option'), { value: p, textContent: p })));
+  }
+}
+
+// ----------------- Appointment Management -----------------
+function initAppointmentsPage() {
+  fillServiceFilterOptions();
+  renderAppointmentsTable();
+
+  document.getElementById('apply-filters').addEventListener('click', renderAppointmentsTable);
+  document.getElementById('reset-filters').addEventListener('click', () => { document.getElementById('filter-service').value = ''; document.getElementById('filter-provider').value = ''; document.getElementById('filter-date').value = ''; renderAppointmentsTable(); });
+}
+
+function renderAppointmentsTable() {
+  const t = document.getElementById('appointments-table');
+  if (!t) return;
+  const apps = read('appointments');
+  const users = read('users');
+  const services = read('services');
+
+  const filterService = document.getElementById('filter-service').value;
+  const filterProvider = document.getElementById('filter-provider').value;
+  const filterDate = document.getElementById('filter-date').value;
+
+  let filtered = apps.slice();
+  if (filterService) filtered = filtered.filter(a => String(a.serviceId) === String(filterService));
+  if (filterProvider) filtered = filtered.filter(a => a.provider === filterProvider);
+  if (filterDate) filtered = filtered.filter(a => a.date === filterDate);
+
+  t.innerHTML = filtered.map(a => {
+    return `<tr>
+      <td>${a.userName || (users.find(u => u.id === a.userId)?.name || '—')}</td>
+      <td>${a.serviceName}</td>
+      <td>${a.provider}</td>
+      <td>${a.date}</td>
+      <td>${a.time}</td>
+      <td>${a.status}</td>
+      <td class="actions">
+        <button class="edit" onclick="rescheduleAppointment(${a.id})">Reschedule</button>
+        <button class="delete" onclick="cancelAppointment(${a.id})">Cancel</button>
+        <button class="status" onclick="changeAppointmentStatus(${a.id})">Mark</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+// appointment actions used from table
+window.rescheduleAppointment = function (id) {
+  const apps = read('appointments');
+  const app = apps.find(a => a.id === id); if (!app) return alert('Not found');
+  const newDate = prompt('New date (YYYY-MM-DD):', app.date);
+  if (!newDate) return;
+  const newTime = prompt('New time (HH:MM):', app.time); if (!newTime) return;
+  app.date = newDate; app.time = newTime; write('appointments', apps); renderAppointmentsTable(); alert('Rescheduled');
+};
+
+window.cancelAppointment = function (id) {
+  if (!confirm('Cancel this appointment?')) return;
+  const apps = read('appointments'); const app = apps.find(a => a.id === id);
+  if (!app) return alert('Not found');
+  app.status = 'Cancelled'; write('appointments', apps); renderAppointmentsTable(); alert('Cancelled');
+};
+
+window.changeAppointmentStatus = function (id) {
+  const apps = read('appointments'); const app = apps.find(a => a.id === id);
+  if (!app) return alert('Not found');
+  const next = prompt('Set status (Confirmed / Completed / Cancelled):', app.status);
+  if (!next) return;
+  app.status = next; write('appointments', apps); renderAppointmentsTable(); alert('Status updated');
+};
+
+// ----------------- User Management -----------------
+function initUsersPage() {
+  renderUserTable();
+
+  const form = document.getElementById('admin-add-user');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('admin-user-name').value;
+    const email = document.getElementById('admin-user-email').value;
+    const phone = document.getElementById('admin-user-phone').value;
+    const role = document.getElementById('admin-user-role').value;
+    const password = document.getElementById('admin-user-password').value || 'changeme';
+    const users = read('users');
+    if (users.some(u => u.email === email)) return alert('Email already exists');
+    users.push({ id: Date.now(), name, email, phone, role, password, status: 'active' });
+    write('users', users);
+    form.reset(); renderUserTable(); window.refreshProviders && window.refreshProviders(); alert('User added');
+  });
+}
+
+function renderUserTable() {
+  const t = document.getElementById('user-table'); if (!t) return;
+  const users = read('users');
+  t.innerHTML = users.map(u => {
+    return `<tr>
+      <td>${u.name}</td>
+      <td>${u.email}</td>
+      <td>${u.phone || '—'}</td>
+      <td>${u.role}</td>
+      <td>${u.status || 'active'}</td>
+      <td class="actions">
+        <button class="edit" onclick="editUser(${u.id})">Edit</button>
+        <button class="delete" onclick="deleteUser(${u.id})">Delete</button>
+        <button class="status" onclick="toggleUserStatus(${u.id})">${u.status === 'deactivated' ? 'Activate' : 'Deactivate'}</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+window.editUser = function (userId) {
+  const users = read('users'); const u = users.find(x => x.id === userId); if (!u) return alert('Not found');
+  const name = prompt('Name:', u.name); if (name === null) return;
+  const phone = prompt('Phone:', u.phone); if (phone === null) return;
+  const role = prompt('Role (user/provider/admin):', u.role); if (role === null) return;
+  u.name = name; u.phone = phone; u.role = role;
+  write('users', users); renderUserTabl
+}

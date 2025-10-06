@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>User Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>User Management</h1>
+    </header>
+    <nav>
+        <a href="Admindashboard.html">Dashboard</a>
+        <a href="service.html">Services</a>
+        <a href="Appoint.html">Appointments</a>
+        <a href="user.html" class="active">Users</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h3>Add New User</h3>
+            <form id="admin-add-user" class="form-grid">
+                <input id="admin-user-name" placeholder="Full name" required />
+                <input id="admin-user-email" placeholder="Email" type="email" required />
+                <input id="admin-user-phone" placeholder="Phone" />
+                <select id="admin-user-role">
+                    <option value="user">User</option>
+                    <option value="provider">Provider</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <input id="admin-user-password" placeholder="Password" type="password" />
+                <div class="form-actions" style="grid-column:1 / -1;">
+                    <button class="btn" type="submit">Add User</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+            <h3>User List</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-table"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+  <script>
+    initUsersPage();
+  </script>
+</body>
+
+</html>

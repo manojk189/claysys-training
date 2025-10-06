@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="board.css">
+    <title>dashboard</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <nav>
+            <ul class="nav">
+                <li><a href="Admindashboard.html"><i class='bxr  bx-dashboard '> Dashboard</i></a></li>
+                <li><a href="service.html">Service Management</a></li>
+                <li><a href="../user module/manage.html"><i class='bxr  bx-alarm'></i> Appointment Management</a></li>
+                <li><a href="user.html"><i class='bxr  bx-user'></i> User Management</a></li>
+                <li><a href="../user module/index.html"><i class='bxr  bx-user-circle'></i> User Login</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main class="main">
+        <div>
+            <h2 class="title">Admin Dashboard</h2>
+        </div>
+        <div>
+            <h1 id="A">About</h1>
+            <p class="content">Welcome to Jayam Hospital. we are committed to providing comprehensive,patient-centered
+                healthcare across
+                a wide range of specialties our dedicated team of experienced mediacal professionals delivers
+                personialized treatment using latest technologys</p>
+        </div>
+        <div class="container">
+            <!-- Overview -->
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>Upcoming Appointments</h3>
+                    <div id="card-appointments" class="stats">0</div>
+                    <p class="act">Next 7 days</p>
+                </div>
+                <div class="card">
+                    <h3>Total Services</h3>
+                    <div id="card-services" class="stats">0</div>
+                    <p class="act">Active services</p>
+                </div>
+                <div class="card">
+                    <h3>Registered Users</h3>
+                    <div id="card-users" class="stats">0</div>
+                    <p class="act">Total accounts</p>
+                </div>
+            </div>
+            <div class="man">
+                <div class="quick-links">
+                    <a class="btn" href="service.html">Manage Services</a>
+                    <a class="btn" href="../user module/manage.html">Manage Appointments</a>
+                    <a class="btn" href="user.html">Manage Users</a>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Reports</h3>
+                <p class="gen">Generate quick stats and exportable small reports</p>
+                <div class="rep">
+                    <button class="btn" id="gen-report">Generate Summary</button>
+                    <button class="btn secondary" id="export-csv">Export Appointments CSV</button>
+                </div>
+                <div id="report-output" class="can"></div>
+            </div>
+            <div class="card" id="j">
+                <h3>Recent Activity</h3>
+                <div id="recent-activity" class="can"></div>
+            </div>
+        </div>
+    </main>
+    <script src="admin.js"></script>
+    <script>
+        // dashboard rendering
+        renderDashboard();
+        document.getElementById('gen-report').addEventListener('click', generateReport);
+        document.getElementById('export-csv').addEventListener('click', exportAppointmentsCSV);
+    </script>
+</body>
+
+</html>
