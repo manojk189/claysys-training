@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Service Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">Admin Dashboard</div>
+            <div class="nav">
+                <a href="dashboard.html">Overview</a>
+                <a href="users.html">User Management</a>
+                <a href="services.html" class="active">Service Management</a>
+                <a href="appointments.html">Appointment Management</a>
+                <hr>
+                <button id="logoutBtn">Logout</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <div class="topbar">
+                <h3>Service Management</h3>
+                <button id="addServiceBtn">Add Service</button>
+            </div>
+            <div class="card">
+                <table id="servicesTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Duration</th>
+                            <th>Price</th>
+                            <th>Providers</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal" class="modal">
+        <div id="modalContent"></div>
+        <div class="closeBtn"><button id="modalClose">Close</button></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if (!checkLogin()) window.location.href = 'index.html';
+        renderServices();
+        document.getElementById('addServiceBtn').onclick = addService;
+    </script>
+</body>
+
+</html>

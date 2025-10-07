@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>User Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">Admin Dashboard</div>
+            <div class="nav">
+                <a href="dashboard.html">Overview</a>
+                <a href="users.html" class="active">User Management</a>
+                <a href="services.html">Service Management</a>
+                <a href="appointments.html">Appointment Management</a>
+                <hr>
+                <button id="logoutBtn">Logout</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <div class="topbar">
+                <h3>User Management</h3>
+                <button id="addUserBtn">Add User</button>
+            </div>
+            <div class="card">
+                <table id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal" class="modal">
+        <div id="modalContent"></div>
+        <div class="closeBtn"><button id="modalClose">Close</button></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if (!checkLogin()) window.location.href = 'index.html';
+        renderUsers();
+        document.getElementById('addUserBtn').onclick = addUser;
+    </script>
+</body>
+
+</html>

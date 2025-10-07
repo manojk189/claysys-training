@@ -8,7 +8,7 @@
 body {
     background: #f4f7fb;
     color: #333;
-    background-image: url(image/man.jpg);
+    background-image: url(image/manage.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -43,9 +43,13 @@ nav {
     padding: 0.5rem;
     text-align: center;
 }
+h1 
+{
+    color: black;
+}
 
 nav a {
-    color: #fff;
+    color:black;
     margin: 0 10px;
     text-decoration: none;
     font-weight: bold;
@@ -141,7 +145,7 @@ a:hover {
     }
 
     nav a {
-        color: #fff;
+        color: black;
         margin: 0 8px;
         text-decoration: none;
         font-weight: bold;

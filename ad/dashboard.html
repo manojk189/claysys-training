@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <title>Dashboard Overview</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">Admin Dashboard</div>
+            <div class="nav">
+                <a href="dashboard.html" class="active"><i class='bxr  bx-dashboard-alt'  ></i> DashBoard</a>
+                <a href="users.html">User Management</a>
+                <a href="services.html">Service Management</a>
+                <a href="appointments.html">Appointment Management</a>
+                <hr>
+                <button id="logoutBtn">Logout</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <div class="topbar">
+                <div>
+                    <h1 id="A">About</h1>
+                    <p class="content">Welcome to Jayam Hospital. we are committed to providing comprehensive,patient-centered
+                        healthcare across
+                        a wide range of specialties our dedicated team of experienced mediacal professionals delivers
+                        personialized treatment using latest technologys</p>
+                </div>
+            </div>
+
+            <section id="overviewView">
+                <div class="grid">
+                    <div class="card">
+                        <h4>Upcoming Appointments</h4>
+                        <div id="upcomingList">—</div>
+                    </div>
+                    <div class="card">
+                        <h4>Service Count</h4>
+                        <div id="serviceCount">0</div>
+                    </div>
+                    <div class="card">
+                        <h4>Registered Users</h4>
+                        <div id="userCount">0</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Recent Activity</h4>
+                    <div id="recentActivity">No recent activity</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if (!checkLogin()) window.location.href = 'index.html';
+        renderOverview();
+    </script>
+</body>
+
+</html>

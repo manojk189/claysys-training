@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin Portal — Dashboard</title>
+    <style>
+        :root {
+            --accent: #0ea5a4;
+            --bg: #f6f8fb;
+            --card: #fff;
+            --muted: #666
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: Inter, Segoe UI, Roboto, Arial;
+            margin: 0;
+            background: var(--bg);
+            color: #111
+        }
+
+        /* Login */
+        .center {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .login-card {
+            width: 360px;
+            background: var(--card);
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(16, 24, 40, .08)
+        }
+
+        .login-card h2 {
+            margin: 0 0 10px
+        }
+
+        .field {
+            margin: 12px 0
+        }
+
+        input[type=text],
+        input[type=password],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #e6e9ef
+        }
+
+        button {
+            background: var(--accent);
+            color: #fff;
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer
+        }
+
+        /* Dashboard layout */
+        .app {
+            display: flex;
+            height: 100vh
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #71dede;
+            color: #fff;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+
+            border: 2px solid rgba(255, 255, 255, .08);
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 16px
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .nav button {
+            background: transparent;
+            color: inherit;
+            border: 0;
+            text-align: left;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer
+        }
+
+        .nav button.active {
+            background: rgba(255, 255, 255, .08)
+        }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+            overflow: auto;
+            border: 2px solid red;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 18px
+        }
+
+        .card {
+            background: var(--card);
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(16, 24, 40, .04)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #eef2f6;
+            text-align: left
+        }
+
+        .actions button {
+            margin-right: 6px
+        }
+
+        /* forms */
+        .form-row {
+            display: flex;
+            gap: 10px
+        }
+
+        .small {
+            width: 140px
+        }
+
+        .notice {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        /* responsive */
+        @media (max-width:600px) {
+            .grid {
+                grid-template-columns: repeat(1, 1fr)
+            }
+
+            .sidebar {
+                width: 100%;
+                background: #71dede;
+                color: #fff;
+                padding: 2px;
+                display: flex;
+                flex-direction: column;
+                border: 2px solid rgba(255, 255, 255, .08);
+            }
+
+            .app {
+                flex-direction: column
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root">
+        <!-- Login screen -->
+        <div id="loginScreen" class="center">
+            <div class="login-card">
+                <h2>Admin Login</h2>
+                <div class="field"><label>Username</label><input id="loginUser" type="text" value="admin"></div>
+                <div class="field"><label>Password</label><input id="loginPass" type="password" value="admin"></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                    <div class="notice">Use <strong>admin</strong> / <strong>admin</strong></div>
+                    <button id="loginBtn">Login</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" style="display:none">
+            <div class="app">
+                <aside class="sidebar">
+                    <div class="brand">Admin Dashboard</div>
+                    <div class="nav">
+                        <button data-view="overview" class="active">Overview</button>
+                        <button data-view="users">User Management</button>
+                        <button data-view="services">Service Management</button>
+                        <button data-view="appointments">Appointment Management</button>
+                        <hr style="border:none;height:1px;background:rgba(255,255,255,.08);margin:10px 0">
+                        <button id="logoutBtn">Logout</button>
+                    </div>
+
+                </aside>
+
+                <main class="main">
+                    <div class="topbar">
+                        <div>
+                            <h3 id="pageTitle">Overview</h3>
+                            <div class="notice">Quick snapshot of activities and stats</div>
+                        </div>
+                        <div><button id="addBtn">+ Add</button></div>
+                    </div>
+
+                    <section id="overviewView">
+                        <div class="grid">
+                            <div class="card">
+                                <h4>Upcoming Appointments</h4>
+                                <div id="upcomingList">—</div>
+                            </div>
+                            <div class="card">
+                                <h4>Service Count</h4>
+                                <div id="serviceCount">0</div>
+                            </div>
+                            <div class="card">
+                                <h4>Registered Users</h4>
+                                <div id="userCount">0</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h4>Recent Activity</h4>
+                            <div id="recentActivity">No recent activity</div>
+                        </div>
+                    </section>
+
+                    <section id="usersView" style="display:none">
+                        <div class="card">
+                            <h4>User Management</h4>
+                            <div
+                                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                                <div class="notice">Users registered in the system</div>
+                                <div><button id="addUserBtn">Add User</button></div>
+                            </div>
+                            <table id="usersTable">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="servicesView" style="display:none">
+                        <div class="card">
+                            <h4>Service Management</h4>
+                            <div
+                                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                                <div class="notice">Add, edit or remove services</div>
+                                <div><button id="addServiceBtn">Add Service</button></div>
+                            </div>
+                            <table id="servicesTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Duration</th>
+                                        <th>Price</th>
+                                        <th>Providers</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="appointmentsView" style="display:none">
+                        <div class="card">
+                            <h4>Appointment Management</h4>
+                            <div
+                                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                                <div class="notice">View and manage appointments</div>
+                                <div><button id="addAppointmentBtn">Add Appointment</button></div>
+                            </div>
+                            <table id="appointmentsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Date/Time</th>
+                                        <th>Service</th>
+                                        <th>User</th>
+                                        <th>Provider</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple modal area -->
+    <div id="modal"
+        style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);align-items:center;justify-content:center">
+        <div
+            style="background:var(--card);padding:16px;border-radius:10px;min-width:320px;max-width:720px;box-shadow:0 12px 40px rgba(2,6,23,.3)">
+            <div id="modalContent"></div>
+            <div style="text-align:right;margin-top:12px"><button id="modalClose">Close</button></div>
+        </div>
+    </div>
+
+    <script>
+        // --- Simple state + persistence ---
+        const STORAGE_KEY = 'admin_portal_v1';
+        let state = { users: [], services: [], appointments: [], activity: [] };
+
+        function load() {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) state = JSON.parse(raw);
+            // seed admin user if none
+            if (!state.users.find(u => u.username === 'admin')) {
+                state.users.push({ id: genId(), 'username': 'admin', 'email': 'admin@local', 'phone': '', 'role': 'admin', 'password': 'admin' });
+            }
+            save();
+        }
+        function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+        function genId() { return Math.random().toString(36).slice(2, 9) }
+
+        // --- UI helpers ---
+        function showView(name) {
+            document.querySelectorAll('[id$="View"]').forEach(s => s.style.display = 'none');
+            document.getElementById(name + 'View').style.display = 'block';
+            document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+            document.querySelector('.nav button[data-view="' + name + '"]')?.classList.add('active');
+            document.getElementById('pageTitle').innerText = { overview: 'Overview', users: 'User Management', services: 'Service Management', appointments: 'Appointment Management' }[name];
+        }
+
+        // --- renderers ---
+        function renderOverview() {
+            const upcoming = state.appointments.filter(a => a.status !== 'completed').slice(0, 5);
+            document.getElementById('upcomingList').innerHTML = upcoming.length ? upcoming.map(a => `<div>${a.datetime} • ${a.service} • ${a.user}</div>`).join('') : '—';
+            document.getElementById('serviceCount').innerText = state.services.length;
+            document.getElementById('userCount').innerText = state.users.length;
+            document.getElementById('recentActivity').innerHTML = state.activity.slice(-6).reverse().map(t => `<div>${t}</div>`).join('') || 'No recent activity';
+        }
+
+        function renderUsers() {
+            const tbody = document.querySelector('#usersTable tbody'); tbody.innerHTML = '';
+            state.users.forEach(u => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${u.username}</td><td>${u.email}</td><td>${u.phone || '-'}</td><td>${u.role || 'user'}</td>
+      <td class="actions">
+        <button onclick="editUser('${u.id}')">Edit</button>
+        <button onclick="deleteUser('${u.id}')">Delete</button>
+      </td>`;
+                tbody.appendChild(tr);
+            })
+        }
+
+        function renderServices() {
+            const tbody = document.querySelector('#servicesTable tbody'); tbody.innerHTML = '';
+            state.services.forEach(s => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${s.name}</td><td>${s.duration}</td><td>${s.price}</td><td>${s.providers || '-'}</td>
+      <td class="actions"><button onclick="editService('${s.id}')">Edit</button><button onclick="deleteService('${s.id}')">Delete</button></td>`;
+                tbody.appendChild(tr);
+            })
+        }
+
+        function renderAppointments() {
+            const tbody = document.querySelector('#appointmentsTable tbody'); tbody.innerHTML = '';
+            state.appointments.forEach(a => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${a.datetime}</td><td>${a.service}</td><td>${a.user}</td><td>${a.provider || '-'}</td><td>${a.status || 'confirmed'}</td>
+      <td class="actions"><button onclick="reschedule('${a.id}')">Reschedule</button><button onclick="cancelAppointment('${a.id}')">Cancel</button></td>`;
+                tbody.appendChild(tr);
+            })
+        }
+
+        // --- user actions ---
+        function editUser(id) {
+            const u = state.users.find(x => x.id === id);
+            showModal(`<h3>Edit User</h3>
+    <div class=\"field\"><label>Username</label><input id=\"u_username\" value=\"${u.username}\"></div>
+    <div class=\"field\"><label>Email</label><input id=\"u_email\" value=\"${u.email}\"></div>
+    <div class=\"field\"><label>Phone</label><input id=\"u_phone\" value=\"${u.phone || ''}\"></div>
+    <div class=\"field\"><label>Role</label><select id=\"u_role\"><option${u.role === 'user' ? ' selected' : ''}>user</option><option${u.role === 'admin' ? ' selected' : ''}>admin</option></select></div>
+    <div style=\"text-align:right;margin-top:8px\"><button onclick=\"saveUser('${u.id}')\">Save</button></div>`)
+        }
+        function saveUser(id) {
+            const u = state.users.find(x => x.id === id);
+            u.username = document.getElementById('u_username').value;
+            u.email = document.getElementById('u_email').value;
+            u.phone = document.getElementById('u_phone').value;
+            u.role = document.getElementById('u_role').value;
+            state.activity.push(`User updated: ${u.username}`);
+            save(); closeModal(); refreshAll();
+        }
+        function deleteUser(id) { if (!confirm('Delete this user?')) return; state.users = state.users.filter(u => u.id !== id); state.activity.push('User deleted'); save(); refreshAll(); }
+
+        function addUser() {
+            showModal(`<h3>Add User</h3>
+    <div class=\"field\"><label>Username</label><input id=\"nu_username\"></div>
+    <div class=\"field\"><label>Email</label><input id=\"nu_email\"></div>
+    <div class=\"field\"><label>Phone</label><input id=\"nu_phone\"></div>
+    <div class=\"field\"><label>Role</label><select id=\"nu_role\"><option>user</option><option>admin</option></select></div>
+    <div style=\"text-align:right;margin-top:8px\"><button onclick=\"createUser()\">Create</button></div>`)
+        }
+        function createUser() {
+            const user = { id: genId(), username: document.getElementById('nu_username').value, email: document.getElementById('nu_email').value, phone: document.getElementById('nu_phone').value, role: document.getElementById('nu_role').value, password: 'pass123' };
+            state.users.push(user); state.activity.push(`User created: ${user.username}`); save(); closeModal(); refreshAll();
+        }
+
+        // --- services ---
+        function addService() {
+            showModal(`<h3>Add Service</h3>
+    <div class=\"field\"><label>Name</label><input id=\"s_name\"></div>
+    <div class=\"form-row\"><div class=\"field small\"><label>Duration</label><input id=\"s_duration\" placeholder=\"e.g. 30 mins\"></div><div class=\"field small\"><label>Price</label><input id=\"s_price\"></div></div>
+    <div class=\"field\"><label>Providers</label><input id=\"s_providers\"></div>
+    <div style=\"text-align:right;margin-top:8px\"><button onclick=\"createService()\">Create</button></div>`)
+        }
+        function createService() {
+            const s = { id: genId(), name: document.getElementById('s_name').value, duration: document.getElementById('s_duration').value, price: document.getElementById('s_price').value, providers: document.getElementById('s_providers').value };
+            state.services.push(s); state.activity.push(`Service added: ${s.name}`); save(); closeModal(); refreshAll();
+        }
+        function editService(id) {
+            const s = state.services.find(x => x.id === id);
+            showModal(`<h3>Edit Service</h3>
+    <div class=\"field\"><label>Name</label><input id=\"es_name\" value=\"${s.name}\"></div>
+    <div class=\"form-row\"><div class=\"field small\"><label>Duration</label><input id=\"es_duration\" value=\"${s.duration}\"></div><div class=\"field small\"><label>Price</label><input id=\"es_price\" value=\"${s.price}\"></div></div>
+    <div class=\"field\"><label>Providers</label><input id=\"es_providers\" value=\"${s.providers || ''}\"></div>
+    <div style=\"text-align:right;margin-top:8px\"><button onclick=\"saveService('${s.id}')\">Save</button></div>`)
+        }
+        function saveService(id) {
+            const s = state.services.find(x => x.id === id);
+            s.name = document.getElementById('es_name').value; s.duration = document.getElementById('es_duration').value; s.price = document.getElementById('es_price').value; s.providers = document.getElementById('es_providers').value;
+            state.activity.push(`Service updated: ${s.name}`); save(); closeModal(); refreshAll();
+        }
+        function deleteService(id) { if (!confirm('Delete this service?')) return; state.services = state.services.filter(s => s.id !== id); state.activity.push('Service deleted'); save(); refreshAll(); }
+
+        // --- appointments ---
+        function addAppointment() {
+            const userOptions = state.users.map(u => `<option value=\"${u.username}\">${u.username}</option>`).join('');
+            const serviceOptions = state.services.map(s => `<option value=\"${s.name}\">${s.name}</option>`).join('');
+            showModal(`<h3>Add Appointment</h3>
+    <div class=\"field\"><label>Date & time</label><input id=\"a_datetime\" placeholder=\"YYYY-MM-DD HH:MM\"></div>
+    <div class=\"field\"><label>Service</label><select id=\"a_service\">${serviceOptions}</select></div>
+    <div class=\"field\"><label>User</label><select id=\"a_user\">${userOptions}</select></div>
+    <div class=\"field\"><label>Provider</label><input id=\"a_provider\"></div>
+    <div style=\"text-align:right;margin-top:8px\"><button onclick=\"createAppointment()\">Create</button></div>`)
+        }
+        function createAppointment() {
+            const a = { id: genId(), datetime: document.getElementById('a_datetime').value, service: document.getElementById('a_service').value, user: document.getElementById('a_user').value, provider: document.getElementById('a_provider').value, status: 'confirmed' };
+            state.appointments.push(a); state.activity.push(`Appointment created: ${a.user} / ${a.service} @ ${a.datetime}`); save(); closeModal(); refreshAll();
+        }
+        function reschedule(id) {
+            const a = state.appointments.find(x => x.id === id);
+            showModal(`<h3>Reschedule</h3><div class=\"field\"><label>New Date/Time</label><input id=\"r_dt\" value=\"${a.datetime}\"></div><div style=\"text-align:right;margin-top:8px\"><button onclick=\"saveReschedule('${a.id}')\">Save</button></div>`)
+        }
+        function saveReschedule(id) { const a = state.appointments.find(x => x.id === id); a.datetime = document.getElementById('r_dt').value; state.activity.push(`Appointment rescheduled: ${a.user} / ${a.service}`); save(); closeModal(); refreshAll(); }
+        function cancelAppointment(id) { if (!confirm('Cancel appointment?')) return; const a = state.appointments.find(x => x.id === id); a.status = 'canceled'; state.activity.push(`Appointment canceled: ${a.user}`); save(); refreshAll(); }
+
+        // --- modal utils ---
+        function showModal(html) { document.getElementById('modalContent').innerHTML = html; const m = document.getElementById('modal'); m.style.display = 'flex'; }
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+
+        // --- auth ---
+        function tryLogin() { const u = document.getElementById('loginUser').value; const p = document.getElementById('loginPass').value; const found = state.users.find(x => x.username === u && x.password === p); if (found && (found.role === 'admin' || found.username === 'admin')) { localStorage.setItem('admin_loggedin', 'true'); showDashboard(); } else alert('Invalid credentials or not an admin'); }
+        function showDashboard() { document.getElementById('loginScreen').style.display = 'none'; document.getElementById('dashboard').style.display = 'block'; refreshAll(); }
+        function logout() { localStorage.removeItem('admin_loggedin'); document.getElementById('dashboard').style.display = 'none'; document.getElementById('loginScreen').style.display = 'flex'; }
+
+        // --- helpers & init ---
+        function refreshAll() { renderOverview(); renderUsers(); renderServices(); renderAppointments(); }
+
+        // wire events
+        load(); if (localStorage.getItem('admin_loggedin')) showDashboard();
+
+        document.getElementById('loginBtn').addEventListener('click', tryLogin);
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        document.querySelectorAll('.nav button[data-view]').forEach(b => b.addEventListener('click', e => { showView(e.currentTarget.dataset.view); }));
+        document.getElementById('addBtn').addEventListener('click', () => { const view = document.querySelector('.nav button.active').dataset.view; if (view === 'users') addUser(); if (view === 'services') addService(); if (view === 'appointments') addAppointment(); if (view === 'overview') alert('Use the sections to add content (Users/Services/Appointments)'); });
+        document.getElementById('addUserBtn').addEventListener('click', addUser);
+        document.getElementById('addServiceBtn').addEventListener('click', addService);
+        document.getElementById('addAppointmentBtn').addEventListener('click', addAppointment);
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+
+        // initial render
+        refreshAll();
+    </script>
+</body>
+
+</html>

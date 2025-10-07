@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin Portal - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="center">
+        <div class="login-card">
+            <h2>Admin Login</h2>
+            <div class="field">
+                <label>Username</label>
+                <input id="loginUser" type="text" value="admin">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input id="loginPass" type="password" value="admin">
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                <div class="notice">Use <strong>admin</strong> / <strong>admin</strong></div>
+                <button id="loginBtn">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById("loginBtn").onclick = () => {
+            if (tryLogin()) window.location.href = "dashboard.html";
+        };
+    </script>
+</body>
+
+</html>
