@@ -151,4 +151,11 @@ a:hover {
         color: red;
         font-size: 10px;
     }
+    nav a {
+    color: rgb(82, 31, 133);
+    margin: 0 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+}
 }

@@ -191,6 +191,20 @@ textarea {
     font-weight: 600;
 }
 
+@media screen {
+    header {
+        font-size: 0.5rem;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 4px;
+        border-radius: 6px;
+        font-size: 12px;
+    }
+}
+
 /* responsive */
 @media (max-width: 900px) {
     .dashboard-grid {

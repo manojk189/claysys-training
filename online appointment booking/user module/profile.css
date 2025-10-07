@@ -117,7 +117,7 @@ a:hover {
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .container {
         width: 95%;
         padding: 1rem;
@@ -135,4 +135,11 @@ a:hover {
     h2 {
         font-size: 15px;
     }
+    nav a {
+    color: #fff;
+    margin: 0 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+}
 }
