@@ -143,14 +143,16 @@ a:hover {
     h2 {
         font-size: 18px;
     }
+
     body {
-    background: #f4f7fb;
-    color: #333;
-    background-image: url(image/manage.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
+        background: #f4f7fb;
+        color: #333;
+        background-image: url(image/manage.jpg);
+        /* background-size: cover; */
+        background-repeat: no-repeat;
+        background-position: center;
+        max-height: 100vh;
+    }
 
 
     nav a {

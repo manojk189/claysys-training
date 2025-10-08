@@ -197,14 +197,9 @@ function initServicePage() {
     if (!confirm('Delete this service?')) return;
     let services = read('services'); services = services.filter(s => s.id !== serviceId); write('services', services); renderServices(); fillServiceFilterOptions();
   };
-
-  // expose helper to refresh provider select if users changed
   window.refreshProviders = fillProviders;
-  // initial fill service filter on appointments page
   fillServiceFilterOptions();
 }
-
-// utility to populate service options used by other pages
 function fillServiceFilterOptions() {
   const services = read('services');
   // if appointments page exists, populate its select
