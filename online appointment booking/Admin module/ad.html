@@ -169,6 +169,36 @@
             font-size: 13px
         }
 
+        .nav {
+            margin-top: 40px;
+            list-style: none;
+            font-size: 1rem;
+        }
+
+        .nav li {
+            margin: 10px 0;
+        }
+
+        #m {
+            color: violet;
+        }
+
+        .nav a {
+            display: block;
+            padding: 2px ;
+            text-decoration: none;
+            color: violet;
+            border-radius: 5px;
+            margin-right: 8px;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav a:hover {
+            color: blue;
+            font-weight: bolder;
+        }
+
         /* responsive */
         @media (max-width:600px) {
             .grid {
@@ -213,14 +243,18 @@
             <div class="app">
                 <aside class="sidebar">
                     <div class="brand">Admin Dashboard</div>
-                    <div class="nav">
-                        <button data-view="overview" class="active">Overview</button>
-                        <button data-view="users">User Management</button>
-                        <button data-view="services">Service Management</button>
-                        <button data-view="appointments">Appointment Management</button>
-                        <hr style="border:none;height:1px;background:rgba(255,255,255,.08);margin:10px 0">
-                        <button id="logoutBtn">Logout</button>
-                    </div>
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="Admindashboard.html"><i class='bxr  bx-dashboard '> Dashboard</i></a></li>
+                            <li><a href="service.html">Service Management</a></li>
+                            <li><a href="../user module/manage.html"><i class='bxr  bx-alarm'></i> Appointment
+                                    Management</a></li>
+                            <li><a href="user.html"><i class='bxr  bx-user'></i> User Management</a></li>
+                            <li><a href="../user module/index.html"><i class='bxr  bx-user-circle'></i> User Login</a>
+                            </li>
+                            <button id="logoutBtn">Logout</button>
+                        </ul>
+                    </nav>
 
                 </aside>
 
