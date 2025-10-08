@@ -1,3 +1,38 @@
+/* Responsive Design */
+@media (max-width: 600px) {
+    .sidebar {
+        width: 90vw;
+        padding: 10px 0;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .card {
+        padding: 10px;
+    }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+    .sidebar {
+        width: 60vw;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .sidebar {
+        width: 340px;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (min-width: 1201px) {
+    .sidebar {
+        width: 340px;
+    }
+}
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +52,8 @@ body {
 
 /* Mobile toggle button and overlay */
 .sidebar-toggle {
-    display: none; /* shown on small screens */
+    display: none;
+    /* shown on small screens */
     position: fixed;
     top: 18px;
     left: 18px;
@@ -34,7 +70,7 @@ body {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 50;
     opacity: 0;
     transition: opacity 0.25s ease;
@@ -111,7 +147,7 @@ body {
     background-color: rgb(219, 223, 223);
     border-radius: 10px;
     /* default subtle border for dashboard area */
-    border: 1px solid rgba(0,0,0,0.06);
+    border: 1px solid rgba(0, 0, 0, 0.06);
 
 }
 
@@ -138,11 +174,14 @@ body {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
+
 .table-responsive table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px; /* allow scrolling on narrow screens */
+    min-width: 600px;
+    /* allow scrolling on narrow screens */
 }
+
 .table-responsive th,
 .table-responsive td {
     padding: 8px;
@@ -152,12 +191,14 @@ body {
 
 /* By default, mobile-stacked cards are hidden; JS will insert both tables and cards
    and CSS toggles which to show depending on screen size */
-.recent-cards { display: none; }
+.recent-cards {
+    display: none;
+}
 
 /* Make recent activity items wrap nicely */
-.recent-activity > div { 
-    padding: 6px 8px; 
-    border-bottom: 1px solid rgba(0,0,0,0.04);
+.recent-activity>div {
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     word-break: break-word;
 }
 
@@ -195,7 +236,7 @@ body {
     padding: 18px;
     box-shadow: 0 6px 18px rgba(15, 23, 36, 0.06);
     /* subtle border to separate cards visually */
-    border: 1px solid rgba(15,23,36,0.04);
+    border: 1px solid rgba(15, 23, 36, 0.04);
 }
 
 .card h3 {
@@ -243,9 +284,11 @@ body {
 
 /* Mobile (<=600px) */
 @media screen and (max-width: 600px) {
-    body { flex-direction: column; }
+    body {
+        flex-direction: column;
+    }
 
-   
+
     .sidebar {
         width: 260px;
         height: 100vh;
@@ -256,64 +299,180 @@ body {
         z-index: 60;
         padding-top: 56px;
         border-radius: 0 8px 8px 0;
-        box-shadow: 2px 0 12px rgba(0,0,0,0.12);
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.12);
         background: #fff;
     }
-    .sidebar-toggle { display: block; }
-    .overlay { display: block; }
-    .overlay.show { opacity: 1; pointer-events: auto; }
 
-    .click { background-color: rgb(16,225,225); width:50px; height:30px; font-size:10px; }
-    #j { background-color: white; font-size: 18px; }
-    .gen { text-align:center; font-size:11px; }
+    .sidebar-toggle {
+        display: block;
+    }
 
-    .quick-links { gap: 6px; margin: 12px 0 20px; font-size: 12px; }
-    .btn { padding: 6px 12px; }
+    .overlay {
+        display: block;
+    }
 
-    .content { text-align: left; padding-left: 12px; color: #3a3a3a; font-size: 13px; }
-    #A { padding-left: 12px; }
+    .overlay.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
 
-    .nav a { font-size: 14px; padding: 10px 12px; }
-    .main { padding: 12px; font-size: 14px; }
+    .click {
+        background-color: rgb(16, 225, 225);
+        width: 50px;
+        height: 30px;
+        font-size: 10px;
+    }
+
+    #j {
+        background-color: white;
+        font-size: 18px;
+    }
+
+    .gen {
+        text-align: center;
+        font-size: 11px;
+    }
+
+    .quick-links {
+        gap: 6px;
+        margin: 12px 0 20px;
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+    }
+
+    .content {
+        text-align: left;
+        padding-left: 12px;
+        color: #3a3a3a;
+        font-size: 13px;
+    }
+
+    #A {
+        padding-left: 12px;
+    }
+
+    .nav a {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .main {
+        padding: 12px;
+        font-size: 14px;
+    }
 
     /* mobile: allow tables to be scrolled horizontally and reduce min-width */
-    .table-responsive table { min-width: 420px; }
-    .recent-activity > div { font-size: 13px; padding: 8px 6px; }
+    .table-responsive table {
+        min-width: 420px;
+    }
+
+    .recent-activity>div {
+        font-size: 13px;
+        padding: 8px 6px;
+    }
 
     /* stack cards and make dashboard single-column */
-    .dashboard-grid { grid-template-columns: 1fr; gap: 12px; }
-    .card { padding: 12px; }
-    .card h3 { font-size: 14px; text-align: left; }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .card h3 {
+        font-size: 14px;
+        text-align: left;
+    }
 
     /* mobile: show stacked recent cards, hide large tables */
-    .recent-tables { display: none; }
-    .recent-cards { display: block !important; }
-    .recent-card { background: #fff; border: 1px solid #e6e6e6; border-radius: 8px; padding: 10px; margin-bottom:8px; }
-    .recent-card strong { display:block; margin-bottom:4px; }
+    .recent-tables {
+        display: none;
+    }
+
+    .recent-cards {
+        display: block !important;
+    }
+
+    .recent-card {
+        background: #fff;
+        border: 1px solid #e6e6e6;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+
+    .recent-card strong {
+        display: block;
+        margin-bottom: 4px;
+    }
 }
 
 /* Tablet (601px - 900px) */
 @media screen and (min-width: 601px) and (max-width: 900px) {
-    .sidebar { width: 300px; }
-    .main { padding: 18px; }
-    .dashboard-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .card { padding: 14px; }
-    .nav a { font-size: 1.05rem; }
-    .table-responsive table { min-width: 520px; }
+    .sidebar {
+        width: 300px;
+    }
+
+    .main {
+        padding: 18px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .nav a {
+        font-size: 1.05rem;
+    }
+
+    .table-responsive table {
+        min-width: 520px;
+    }
 }
 
 /* Laptop (901px - 1200px) */
 @media screen and (min-width: 901px) and (max-width: 1200px) {
-    .sidebar { width: 320px; }
-    .dashboard-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .main { padding: 20px; }
-    .card { padding: 16px; }
+    .sidebar {
+        width: 320px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .card {
+        padding: 16px;
+    }
 }
 
 /* Desktop (>=1201px) */
 @media screen and (min-width: 1201px) {
+
     /* default desktop layout already defined above - minor tweaks */
-    .sidebar { width: 340px; }
-    .dashboard-grid { grid-template-columns: repeat(3, 1fr); }
-    .container { max-width: 1200px; }
+    .sidebar {
+        width: 340px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .container {
+        max-width: 1200px;
+    }
 }
