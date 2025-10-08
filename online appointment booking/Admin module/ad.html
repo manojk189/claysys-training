@@ -354,7 +354,7 @@
             }
         }
 
-        /* 🖥️ Desktop (1201px and above) */
+    /* 🖥️ Desktop (1201px and above) */
         @media screen and (min-width: 1201px) {
             .app {
                 flex-direction: row;
@@ -376,6 +376,10 @@
                 width: 360px;
             }
         }
+        /* Responsive table wrapper to prevent horizontal overflow on small screens */
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+        .table-responsive table { width: 100%; max-width: 100%; border-collapse: collapse; }
+        .table-responsive th, .table-responsive td { white-space: nowrap; }
     </style>
 </head>
 
@@ -455,6 +459,7 @@
                                 <div class="notice">Users registered in the system</div>
                                 <div><button id="addUserBtn">Add User</button></div>
                             </div>
+                            <div class="table-responsive">
                             <table id="usersTable">
                                 <thead>
                                     <tr>
@@ -467,6 +472,7 @@
                                 </thead>
                                 <tbody></tbody>
                             </table>
+                            </div>
                         </div>
                     </section>
 
@@ -477,6 +483,7 @@
                                 <div class="notice">Add, edit or remove services</div>
                                 <div><button id="addServiceBtn">Add Service</button></div>
                             </div>
+                            <div class="table-responsive">
                             <table id="servicesTable">
                                 <thead>
                                     <tr>
@@ -489,6 +496,7 @@
                                 </thead>
                                 <tbody></tbody>
                             </table>
+                            </div>
                         </div>
                     </section>
 
@@ -499,6 +507,7 @@
                                 <div class="notice">View and manage appointments</div>
                                 <div><button id="addAppointmentBtn">Add Appointment</button></div>
                             </div>
+                            <div class="table-responsive">
                             <table id="appointmentsTable">
                                 <thead>
                                     <tr>
@@ -512,6 +521,7 @@
                                 </thead>
                                 <tbody></tbody>
                             </table>
+                            </div>
                         </div>
                     </section>
                 </main>

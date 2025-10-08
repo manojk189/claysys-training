@@ -15,6 +15,39 @@ body {
     background-size: cover;
 }
 
+/* Mobile toggle button and overlay */
+.sidebar-toggle {
+    display: none; /* shown on small screens */
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 60;
+    background: #0b7bd6;
+    color: #fff;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 18px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
 
 .sidebar {
     width: 340px;
@@ -197,13 +230,26 @@ body {
         font-size: 9px;
     }
 
+    /* Hide sidebar off-canvas and show toggle */
     .sidebar {
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid #e5e5e5;
-
+        width: 260px;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(-110%);
+        z-index: 60;
+        padding-top: 56px; /* leave space for toggle */
+        border-radius: 0 8px 8px 0;
+        box-shadow: 2px 0 12px rgba(0,0,0,0.12);
+        background: #fff;
     }
+
+    .sidebar-toggle { display: block; }
+    .overlay { display: block; }
+
+    /* when sidebar has open class overlay should be visible */
+    .overlay.show { opacity: 1; pointer-events: auto; }
 
     .quick-links {
         display: flex;

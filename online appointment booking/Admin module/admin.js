@@ -27,6 +27,37 @@
 function read(key) { return JSON.parse(localStorage.getItem(key) || '[]'); }
 function write(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
 
+// Inject responsive table styles once and provide helper to wrap tables
+function injectResponsiveTableStyles() {
+  if (document.getElementById('responsive-table-styles')) return;
+  const css = `
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+    .table-responsive table { width: 100%; max-width: 100%; border-collapse: collapse; }
+    .table-responsive table td, .table-responsive table th { white-space: nowrap; }
+    @media (max-width: 768px) {
+      .table-responsive table { display: block; }
+    }
+  `;
+  const style = document.createElement('style');
+  style.id = 'responsive-table-styles';
+  style.appendChild(document.createTextNode(css));
+  document.head.appendChild(style);
+}
+
+function ensureTableResponsive(el) {
+  if (!el) return;
+  // if a tbody was passed, get its table
+  const table = (el.tagName && el.tagName.toLowerCase() === 'table') ? el : (el.closest ? el.closest('table') : null);
+  if (!table) return;
+  // if already wrapped, nothing to do
+  if (table.parentElement && table.parentElement.classList && table.parentElement.classList.contains('table-responsive')) return;
+  // wrap table in a div.table-responsive
+  const wrapper = document.createElement('div');
+  wrapper.className = 'table-responsive';
+  table.parentNode.insertBefore(wrapper, table);
+  wrapper.appendChild(table);
+}
+
 // ----------------- Dashboard functions -----------------
 function renderDashboard() {
   const users = read('users');
@@ -46,19 +77,24 @@ function renderDashboard() {
   });
   document.getElementById('card-appointments').innerText = upcoming.length;
 
+  // ensure responsive styles are present
+  injectResponsiveTableStyles();
+
   // recent activity (last 5 appointments + registrations)
   const recentDiv = document.getElementById('recent-activity');
   recentDiv.innerHTML = '';
   const recentUsers = users.slice(-5).reverse();
   const recentApps = appointments.slice(-5).reverse();
-  let html = '<table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;border:none;color:green;"><thead><tr><th>Name</th><th>Email</th><th>Phone</th></tr></thead><tbody>';
+  let html = '<div class="table-responsive"><table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;border:none;color:green;"><thead><tr><th>Name</th><th>Email</th><th>Phone</th></tr></thead><tbody>';
   if (recentUsers.length === 0) html += '<tr><td colspan="3">No registrations</td></tr>';
   recentUsers.forEach(u => html += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.phone}</td></tr>`);
-  html += '</tbody></table><strong style="margin-top:8px;display:block">Recent bookings:</strong><table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;color:skyblue;border:none"><thead><tr><th>User</th><th>Service</th><th>Date</th><th>Time</th></tr></thead><tbody>';
+  html += '</tbody></table></div><strong style="margin-top:8px;display:block">Recent bookings:</strong><div class="table-responsive"><table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;color:skyblue;border:none"><thead><tr><th>User</th><th>Service</th><th>Date</th><th>Time</th></tr></thead><tbody>';
   if (recentApps.length === 0) html += '<tr><td colspan="4">No bookings</td></tr>';
   recentApps.forEach(a => html += `<tr><td>${a.userName}</td><td>${a.serviceName}</td><td>${a.date}</td><td>${a.time}</td></tr>`);
-  html += '</tbody></table>';
+  html += '</tbody></table></div>';
   recentDiv.innerHTML = html;
+  // ensure the tables are wrapped (in case DOM structure changed elsewhere)
+  ensureTableResponsive(recentDiv);
 
 }
 
@@ -158,6 +194,9 @@ function initServicePage() {
         </td>
       </tr>`;
     }).join('');
+    // ensure responsive table styles & wrapper
+    injectResponsiveTableStyles();
+    ensureTableResponsive(tb);
   }
   renderServices();
 
@@ -242,6 +281,7 @@ function initAppointmentsPage() {
 function renderAppointmentsTable() {
   const t = document.getElementById('appointments-table');
   if (!t) return;
+  injectResponsiveTableStyles();
   const apps = read('appointments');
   const users = read('users');
   const services = read('services');
@@ -270,6 +310,8 @@ function renderAppointmentsTable() {
       </td>
     </tr>`;
   }).join('');
+  // if appointments table is inside a container where a full table tag exists, ensure responsiveness
+  ensureTableResponsive(t);
 }
 
 // appointment actions used from table
@@ -324,6 +366,7 @@ function initUsersPage() {
 
 function renderUserTable() {
   const t = document.getElementById('user-table'); if (!t) return;
+  injectResponsiveTableStyles();
   const users = read('users');
   t.innerHTML = users.map(u => {
     return `<tr>
@@ -339,6 +382,7 @@ function renderUserTable() {
       </td>
     </tr>`;
   }).join('');
+  ensureTableResponsive(t);
 }
 
 window.editUser = function (userId) {
@@ -417,3 +461,22 @@ function initAdminLogin() {
     window.location.href = 'admin_dashboard.html';
   });
 }
+
+// ----------------- Mobile sidebar toggle -----------------
+(function sidebarToggleInit(){
+  // safe-guard DOM availability
+  function qs(id){ return document.getElementById(id); }
+  const toggle = qs('sidebarToggle');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = qs('overlay');
+  if (!toggle || !sidebar || !overlay) return;
+
+  function openSidebar(){ sidebar.classList.add('open'); overlay.classList.add('show'); document.body.style.overflow = 'hidden'; }
+  function closeSidebar(){ sidebar.classList.remove('open'); overlay.classList.remove('show'); document.body.style.overflow = ''; }
+
+  toggle.addEventListener('click', function(e){
+    if (sidebar.classList.contains('open')) closeSidebar(); else openSidebar();
+  });
+  overlay.addEventListener('click', closeSidebar);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeSidebar(); });
+})();
