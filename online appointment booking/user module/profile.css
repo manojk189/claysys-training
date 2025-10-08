@@ -146,92 +146,38 @@ h1:hover {
     color: black;
 }
 
-
-
-/* Mobile (up to 600px) */
+/* Mobile (<= 600px) */
 @media screen and (max-width: 600px) {
-    body {
-        background-position: top;
-        font-size: 15px;
-    }
-
-    .login-container {
-        max-width: 420px;
-        margin: 8vh auto;
-        padding: 20px;
-        font-size: 0.95rem;
-    }
-
-    nav a {
-        display: block;
-        margin: 8px 0;
-    }
-
-    .container {
-        width: 95%;
-        padding: 0.9rem;
-    }
-
-    form {
-        gap: 0.6rem;
-    }
-
-    input,
-    select,
-    button {
-        font-size: 0.95rem;
-        padding: 9px;
-    }
-
-    h2 {
-        font-size: 1.15rem;
-        text-align: center;
-    }
+    body { background-position: top; font-size: 15px; }
+    .login-container { max-width: 92%; margin: 8vh auto; padding: 18px; font-size: 0.95rem; }
+    nav a { display: block; margin: 8px 0; }
+    .container { width: 96%; padding: 0.9rem; }
+    form { gap: 0.6rem; }
+    input, select, button { font-size: 0.95rem; padding: 9px; }
+    h2 { font-size: 1.15rem; text-align: center; }
 }
 
-/* ----- Tablet (601px to 1024px) ----- */
-/* Tablet */
-@media screen and (min-width: 601px) and (max-width: 1024px) {
-    .login-container {
-        max-width: 640px;
-        padding: 30px;
-    }
-
-    nav a {
-        margin: 0 12px;
-        font-size: 1rem;
-    }
-
-    .container {
-        width: 88%;
-    }
-
-    h2 {
-        font-size: 1.4rem;
-    }
-
-    button {
-        padding: 12px;
-        font-size: 1rem;
-    }
+/* Tablet (601px - 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .login-container { max-width: 72%; padding: 28px; margin: 10% auto; }
+    nav a { margin: 0 10px; font-size: 1rem; }
+    .container { width: 88%; }
+    h2 { font-size: 1.35rem; }
+    button { padding: 11px; }
 }
 
-/* ----- Laptop/Desktop (1025px and above) ----- */
-/* Desktop */
-@media screen and (min-width: 1025px) {
-    .login-container {
-        margin: 6vh auto;
-    }
+/* Laptop (901px - 1200px) */
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+    .login-container { width: 420px; margin: 6vh auto; padding: 34px; }
+    .container { max-width: 850px; }
+    nav a { font-size: 1.05rem; }
+    button { font-size: 1rem; }
+}
 
-    .container {
-        max-width: 1000px;
-    }
-
-    nav a {
-        font-size: 1.1rem;
-    }
-
-    h2 {
-        font-size: 1.6rem;
-    }
+/* Desktop (>= 1201px) */
+@media screen and (min-width: 1201px) {
+    .login-container { width: 480px; margin: 6vh auto; }
+    .container { max-width: 1000px; }
+    nav a { font-size: 1.12rem; }
+    h2 { font-size: 1.6rem; }
 }

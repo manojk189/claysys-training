@@ -22,10 +22,10 @@ function initAdminLogin() {
       return;
     }
 
-    // Save logged-in user to localStorage
-    localStorage.setItem('loggedInUser', JSON.stringify(admin));
-
+    // Save logged-in admin to localStorage using canonical keys
+    localStorage.setItem('admin_loggedin', 'true');
+    localStorage.setItem('currentAdmin', JSON.stringify(admin));
     // Redirect to admin dashboard automatically
-    window.location.href = 'admin_dashboard.html';
+    window.location.href = 'Admindashboard.html';
   });
 }

@@ -146,124 +146,41 @@ body {
         color: rgb(215, 66, 205);
     }
 
-    /* ---- Mobile Devices (Up to 600px) ---- */
+    /* Mobile (<= 600px) */
     @media screen and (max-width: 600px) {
-        body {
-            background-position: top center;
-            background-size: cover;
-            overflow-y: auto;
-        }
-
-        header {
-            font-size: 1.3rem;
-            padding: 0.8rem;
-        }
-
-        nav a {
-            display: block;
-            margin: 8px 0;
-            font-size: 1rem;
-        }
-
-        .login-container {
-            width: 90%;
-            margin: 1% auto;
-            padding: 25px;
-            border-radius: 12px;
-        }
-
-        .login-container h2 {
-            font-size: 1rem;
-        }
-
-        input,
-        select,
-        button {
-            font-size: 0.95rem;
-            padding: 9px;
-        }
-
-        button {
-            width: 100%;
-        }
-
-        .container {
-            width: 95%;
-            padding: 1rem;
-        }
-
-        h2 {
-            font-size: 1.3rem;
-            text-align: center;
-        }
-
-        .appointment-card {
-            padding: 0.8rem;
-        }
+        body { background-position: top center; background-size: cover; overflow-y: auto; }
+        header { font-size: 1.2rem; padding: 0.8rem; }
+        nav a { display: block; margin: 8px 0; font-size: 1rem; }
+        .login-container { width: 92%; margin: 6% auto 1rem; padding: 20px; border-radius: 12px; }
+        .login-container h2 { font-size: 1.1rem; }
+        input, select, button { font-size: 0.95rem; padding: 9px; }
+        button { width: 100%; }
+        .container { width: 96%; padding: 1rem; }
+        h2 { font-size: 1.25rem; text-align: center; }
+        .appointment-card { padding: 0.8rem; }
     }
 
-    /* ---- Tablets (601px to 900px) ---- */
+    /* Tablet (601px - 900px) */
     @media screen and (min-width: 601px) and (max-width: 900px) {
-        header {
-            font-size: 1.4rem;
-        }
-
-        nav a {
-            margin: 0 8px;
-            font-size: 1rem;
-        }
-
-        .login-container {
-            width: 80%;
-            margin: 12% auto;
-            padding: 35px;
-        }
-
-        .container {
-            width: 85%;
-            padding: 1.5rem;
-        }
-
-        button {
-            padding: 10px 15px;
-        }
+        header { font-size: 1.35rem; }
+        nav a { margin: 0 8px; font-size: 1rem; }
+        .login-container { width: 72%; margin: 10% auto; padding: 30px; }
+        .container { width: 88%; padding: 1.25rem; }
+        button { padding: 10px 15px; }
     }
 
-    /* ---- Laptops (901px to 1200px) ---- */
+    /* Laptop (901px - 1200px) */
     @media screen and (min-width: 901px) and (max-width: 1200px) {
-        .login-container {
-            width: 420px;
-            padding: 40px;
-        }
-
-        .container {
-            max-width: 750px;
-        }
-
-        nav a {
-            font-size: 1.05rem;
-        }
-
-        button {
-            font-size: 1rem;
-        }
+        .login-container { width: 420px; margin: 8% auto; padding: 36px; }
+        .container { max-width: 800px; }
+        nav a { font-size: 1.05rem; }
+        button { font-size: 1rem; }
     }
 
-    /* ---- Desktops (1201px and above) ---- */
+    /* Desktop (>= 1201px) */
     @media screen and (min-width: 1201px) {
-        .login-container {
-            width: 450px;
-        }
-
-        .container {
-            max-width: 800px;
-        }
-
-        nav a {
-            font-size: 1.1rem;
-        }
-
-        button {
-            padding: 12px 25px;
-        }
+        .login-container { width: 480px; }
+        .container { max-width: 900px; }
+        nav a { font-size: 1.1rem; }
+        button { padding: 12px 25px; }
     }

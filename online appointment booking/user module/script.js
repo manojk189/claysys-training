@@ -184,3 +184,39 @@ if (document.getElementById("upcoming-appointments")) {
   }
 
 }
+
+// ----------------- Admin Login -----------------
+function initAdminLogin() {
+  const form = document.getElementById('admin-login-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value.trim();
+    const errorBox = document.getElementById('login-error');
+
+    // reuse existing users array
+    const admin = users.find(u => u.email === email && u.password === password && u.role === 'admin');
+
+    if (!admin) {
+      if (errorBox) errorBox.textContent = 'Invalid admin credentials';
+      else alert('Invalid admin credentials');
+      return;
+    }
+
+    if (admin.status === 'deactivated') {
+      if (errorBox) errorBox.textContent = 'Admin account is deactivated';
+      else alert('Admin account is deactivated');
+      return;
+    }
+
+    // Do not auto-login here. Redirect user to the Admin login page
+    // so they can complete admin authentication there.
+    if (errorBox) errorBox.textContent = '';
+    window.location.href = '../Admin module/ad.html';
+  });
+}
+
+// initialize admin login if the form exists on the page
+if (document.getElementById('admin-login-form')) initAdminLogin();

@@ -141,103 +141,47 @@ a:hover {
     color: skyblue;
 }
 
-
-/* ---- Mobile Phones (max-width: 600px) ---- */
+/* Mobile (<= 600px) */
 @media screen and (max-width: 600px) {
-    header {
-        font-size: 1.2rem;
-        padding: 0.8rem;
-    }
+    header { font-size: 1.1rem; padding: 0.8rem; }
 
-    nav a {
-        display: block;
-        margin: 8px 0;
-        font-size: 1rem;
-    }
+    nav a { display: block; margin: 8px 0; font-size: 1rem; }
 
     .login-container {
-        width: 90%;
-        margin: 20% auto;
-        padding: 25px;
+        width: 92%;
+        margin: 18% auto 2rem;
+        padding: 20px;
         border-radius: 12px;
     }
 
-    .login-container h2 {
-        font-size: 1.4rem;
-    }
+    .login-container h2 { font-size: 1.4rem; }
 
-    input,
-    select,
-    button {
-        font-size: 0.95rem;
-        padding: 9px;
-    }
+    input, select, button { font-size: 0.95rem; padding: 9px; }
 
-    .container {
-        width: 95%;
-        padding: 1rem;
-    }
+    .container { width: 96%; padding: 1rem; }
 
-    h2 {
-        text-align: center;
-        font-size: 1.2rem;
-    }
+    h2 { text-align: center; font-size: 1.15rem; }
 }
 
-/* ---- Tablets (601px to 900px) ---- */
+/* Tablet (601px - 900px) */
 @media screen and (min-width: 601px) and (max-width: 900px) {
-    .login-container {
-        width: 70%;
-        margin: 12% auto;
-        padding: 35px;
-    }
-
-    header {
-        font-size: 1.4rem;
-    }
-
-    nav a {
-        margin: 0 12px;
-        font-size: 1.05rem;
-    }
-
-    .container {
-        width: 85%;
-        padding: 1.5rem;
-    }
+    .login-container { width: 72%; margin: 12% auto; padding: 30px; }
+    header { font-size: 1.3rem; }
+    nav a { margin: 0 12px; font-size: 1.05rem; }
+    .container { width: 88%; padding: 1.25rem; }
 }
 
-/* ---- Laptops (901px to 1200px) ---- */
+/* Laptop (901px - 1200px) */
 @media screen and (min-width: 901px) and (max-width: 1200px) {
-    .login-container {
-        width: 420px;
-        margin: 10% auto;
-    }
-
-    nav a {
-        font-size: 1.05rem;
-    }
-
-    .container {
-        max-width: 750px;
-    }
+    .login-container { width: 420px; margin: 10% auto; padding: 36px; }
+    nav a { font-size: 1.05rem; }
+    .container { max-width: 800px; }
 }
 
-/* ---- Desktops (1201px and above) ---- */
+/* Desktop (>= 1201px) */
 @media screen and (min-width: 1201px) {
-    .login-container {
-        width: 450px;
-    }
-
-    nav a {
-        font-size: 1.1rem;
-    }
-
-    .container {
-        max-width: 800px;
-    }
-
-    button {
-        padding: 12px 25px;
-    }
+    .login-container { width: 480px; }
+    nav a { font-size: 1.1rem; }
+    .container { max-width: 900px; }
+    button { padding: 12px 25px; }
 }

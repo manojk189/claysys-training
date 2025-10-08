@@ -114,112 +114,70 @@ body {
 }
 
 
+/* Mobile (<= 600px) */
 @media screen and (max-width: 600px) {
     body {
         height: auto;
         overflow: auto;
-        padding: 20px 0;
+        padding: 16px 0;
+        font-size: 14px;
     }
 
     .hero {
         flex-direction: column;
-        padding: 20px;
+        padding: 12px;
+        align-items: flex-start;
     }
 
     .hero-content {
-        max-width: 90%;
-        padding: 15px;
+        max-width: 95%;
+        padding: 12px;
+        text-align: left;
     }
 
     .hero-content h1 {
-        font-size: 2rem;
-        text-align: center;
+        font-size: 1.8rem;
+        text-align: left;
         animation: typing 2s steps(15, end) forwards, blink 0.75s step-end infinite;
+        white-space: normal; /* allow wrapping on narrow screens */
+        border-right: 2px solid #fff;
     }
 
-    .hero-content p {
-        font-size: 1rem;
-        text-align: justify;
-    }
+    .hero-content p { font-size: 1rem; line-height: 1.45; text-align: left; }
 
-    .buttons {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-        padding: 10px 0;
-        font-size: 0.95rem;
-    }
+    .buttons { flex-direction: column; gap: 10px; width: 100%; }
+    .btn { width: 100%; padding: 10px 12px; font-size: 0.95rem; }
 }
 
-/* ---- Tablets (601px to 900px) ---- */
+/* Tablet (601px - 900px) */
 @media screen and (min-width: 601px) and (max-width: 900px) {
-    .hero-content {
-        max-width: 600px;
-        padding: 25px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-        animation: typing 2.5s steps(18, end) forwards, blink 0.75s step-end infinite;
-    }
-
-    .hero-content p {
-        font-size: 1.1rem;
-    }
-
-    .buttons {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .btn {
-        padding: 10px 22px;
-        font-size: 1rem;
-    }
+    body { font-size: 15px; }
+    .hero { padding: 18px; }
+    .hero-content { max-width: 620px; padding: 18px; }
+    .hero-content h1 { font-size: 2.4rem; animation: typing 2.5s steps(18, end) forwards, blink 0.75s step-end infinite; }
+    .hero-content p { font-size: 1.1rem; }
+    .buttons { gap: 12px; }
+    .btn { padding: 11px 22px; font-size: 1rem; }
 }
 
-/* ---- Laptops (901px to 1200px) ---- */
+/* Laptop (901px - 1200px) */
 @media screen and (min-width: 901px) and (max-width: 1200px) {
-    .hero-content {
-        max-width: 650px;
-        padding: 30px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
-
-    .hero-content p {
-        font-size: 1.15rem;
-    }
-
-    .btn {
-        padding: 12px 25px;
-    }
+    body { font-size: 16px; }
+    .hero { padding: 20px; }
+    .hero-content { max-width: 700px; padding: 22px; }
+    .hero-content h1 { font-size: 2.8rem; animation: typing 3s steps(20, end) forwards, blink 0.75s step-end infinite; }
+    .hero-content p { font-size: 1.15rem; }
+    .btn { padding: 12px 26px; }
 }
 
-/* ---- Desktops (1201px and above) ---- */
+/* Desktop (>= 1201px) */
 @media screen and (min-width: 1201px) {
-    .hero-content {
-        max-width: 750px;
-    }
-
-    .hero-content h1 {
-        font-size: 3rem;
-    }
-
-    .hero-content p {
-        font-size: 1.2rem;
-    }
-
-    .btn {
-        padding: 12px 30px;
-    }
+    body { font-size: 17px; }
+    .hero { padding: 30px 0; }
+    .hero-content { max-width: 850px; padding: 28px; }
+    .hero-content h1 { font-size: 3rem; }
+    .hero-content p { font-size: 1.2rem; }
+    .btn { padding: 12px 30px; }
 }
 
 

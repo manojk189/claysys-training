@@ -23,11 +23,11 @@
   }
 })();
 
-// helpers to read/write
+
 function read(key) { return JSON.parse(localStorage.getItem(key) || '[]'); }
 function write(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
 
-// Inject responsive table styles once and provide helper to wrap tables
+
 function injectResponsiveTableStyles() {
   if (document.getElementById('responsive-table-styles')) return;
   const css = `
@@ -85,16 +85,38 @@ function renderDashboard() {
   recentDiv.innerHTML = '';
   const recentUsers = users.slice(-5).reverse();
   const recentApps = appointments.slice(-5).reverse();
-  let html = '<div class="table-responsive"><table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;border:none;color:green;"><thead><tr><th>Name</th><th>Email</th><th>Phone</th></tr></thead><tbody>';
-  if (recentUsers.length === 0) html += '<tr><td colspan="3">No registrations</td></tr>';
-  recentUsers.forEach(u => html += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.phone}</td></tr>`);
-  html += '</tbody></table></div><strong style="margin-top:8px;display:block">Recent bookings:</strong><div class="table-responsive"><table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;color:skyblue;border:none"><thead><tr><th>User</th><th>Service</th><th>Date</th><th>Time</th></tr></thead><tbody>';
-  if (recentApps.length === 0) html += '<tr><td colspan="4">No bookings</td></tr>';
-  recentApps.forEach(a => html += `<tr><td>${a.userName}</td><td>${a.serviceName}</td><td>${a.date}</td><td>${a.time}</td></tr>`);
-  html += '</tbody></table></div>';
-  recentDiv.innerHTML = html;
+  // Build desktop tables
+  let tableHtml = '<div class="recent-tables">';
+  tableHtml += '<div class="table-responsive"><table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;border:none;color:green;"><thead><tr><th>Name</th><th>Email</th><th>Phone</th></tr></thead><tbody>';
+  if (recentUsers.length === 0) tableHtml += '<tr><td colspan="3">No registrations</td></tr>';
+  recentUsers.forEach(u => tableHtml += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.phone}</td></tr>`);
+  tableHtml += '</tbody></table></div>';
+
+  tableHtml += '<strong style="margin-top:8px;display:block">Recent bookings:</strong>';
+  tableHtml += '<div class="table-responsive"><table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;color:skyblue;border:none"><thead><tr><th>User</th><th>Service</th><th>Date</th><th>Time</th></tr></thead><tbody>';
+  if (recentApps.length === 0) tableHtml += '<tr><td colspan="4">No bookings</td></tr>';
+  recentApps.forEach(a => tableHtml += `<tr><td>${a.userName}</td><td>${a.serviceName}</td><td>${a.date}</td><td>${a.time}</td></tr>`);
+  tableHtml += '</tbody></table></div>';
+  tableHtml += '</div>';
+
+  // Build mobile stacked cards
+  let cardHtml = '<div class="recent-cards" style="display:none">';
+  cardHtml += '<div class="recent-users-cards">';
+  cardHtml += '<h4>Recent registrations</h4>';
+  if (recentUsers.length === 0) cardHtml += '<div class="recent-card">No registrations</div>';
+  recentUsers.forEach(u => cardHtml += `<div class="recent-card"><strong>${u.name}</strong><div>${u.email}</div><div>${u.phone || '—'}</div></div>`);
+  cardHtml += '</div>';
+  cardHtml += '<div class="recent-bookings-cards" style="margin-top:8px">';
+  cardHtml += '<h4>Recent bookings</h4>';
+  if (recentApps.length === 0) cardHtml += '<div class="recent-card">No bookings</div>';
+  recentApps.forEach(a => cardHtml += `<div class="recent-card"><strong>${a.userName}</strong><div>${a.serviceName}</div><div>${a.date} ${a.time}</div></div>`);
+  cardHtml += '</div>';
+  cardHtml += '</div>';
+
+  recentDiv.innerHTML = tableHtml + cardHtml;
   // ensure the tables are wrapped (in case DOM structure changed elsewhere)
-  ensureTableResponsive(recentDiv);
+  // wrap tables inside the recently inserted content
+  recentDiv.querySelectorAll('table').forEach(t => ensureTableResponsive(t));
 
 }
 
@@ -430,6 +452,39 @@ window.toggleUserStatus = function (userId) {
   renderUserTable();
   alert(`User ${u.status === 'deactivated' ? 'deactivated' : 'activated'}`);
 };
+// ====== LOGIN (general user) ======
+// Attach a handler to a form with id="login-form" (if present). This is
+// separate from the admin login form (which uses id="admin-login-form").
+if (document.getElementById('login-form')) {
+  document.getElementById('login-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = (document.getElementById('login-email') || {}).value || '';
+    const password = (document.getElementById('login-password') || {}).value || '';
+    const errorBox = document.getElementById('login-error');
+
+    const users = read('users') || [];
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (!user) {
+      if (errorBox) errorBox.textContent = 'Invalid credentials';
+      else alert('Invalid credentials!');
+      return;
+    }
+
+    if (user.status === 'deactivated') {
+      if (errorBox) errorBox.textContent = 'Account is deactivated';
+      else alert('Account is deactivated');
+      return;
+    }
+
+    // Save current user and redirect to profile
+    window.currentUser = user;
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    if (errorBox) errorBox.textContent = '';
+    alert('Login successful!');
+    window.location.href = 'profile.html';
+  });
+}
 // ----------------- Admin Login -----------------
 function initAdminLogin() {
   const form = document.getElementById('admin-login-form');
@@ -454,11 +509,11 @@ function initAdminLogin() {
       return;
     }
 
-    // Save logged-in user to localStorage
-    localStorage.setItem('loggedInUser', JSON.stringify(admin));
-
+    // Save logged-in admin to localStorage using canonical keys
+    localStorage.setItem('admin_loggedin', 'true');
+    localStorage.setItem('currentAdmin', JSON.stringify(admin));
     // Redirect to admin dashboard
-    window.location.href = 'admin_dashboard.html';
+    window.location.href = 'Admindashboard.html';
   });
 }
 
