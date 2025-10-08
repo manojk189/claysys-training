@@ -117,38 +117,121 @@ a:hover {
 }
 
 
-@media (max-width: 600px) {
+
+
+button {
+    background: #4A90E2;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background: rgb(114, 234, 114);
+}
+
+.appointment-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.actions button {
+    margin-right: 10px;
+}
+
+h1:hover {
+    color: black;
+}
+
+a:hover {
+    color: rgb(55, 55, 160);
+}
+
+   
+@media screen and (max-width: 600px) {
+    body {
+        background-position: top;
+    }
+
+    .login-container {
+        width: 90%;
+        margin: 20% auto;
+        padding: 25px;
+        font-size: 0.9rem;
+    }
+
+    nav a {
+        display: block;
+        margin: 8px 0;
+    }
+
     .container {
         width: 95%;
         padding: 1rem;
     }
 
-    .login-container {
-        width: 90%;
-        padding: 20px;
+    form {
+        gap: 0.6rem;
     }
 
-    h1 {
-        font-size: 13px;
+    input,
+    select,
+    button {
+        font-size: 0.9rem;
+        padding: 8px;
     }
 
     h2 {
-        font-size: 15px;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
+
+/* ----- Tablet (601px to 1024px) ----- */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .login-container {
+        width: 70%;
+        padding: 35px;
     }
 
     nav a {
-        color: #fff;
-        margin: 0 8px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 12px;
+        margin: 0 15px;
+        font-size: 1rem;
     }
 
-    body {
-        background: #f4f7fb;
-        color: #333;
-        background-image: url(image/nature.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
+    .container {
+        width: 85%;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+/* ----- Laptop/Desktop (1025px and above) ----- */
+@media screen and (min-width: 1025px) {
+    .login-container {
+        width: 450px;
+        margin: 8% auto;
+    }
+
+    .container {
+        max-width: 900px;
+    }
+
+    nav a {
+        font-size: 1.1rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
     }
 }

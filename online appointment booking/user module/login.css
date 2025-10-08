@@ -141,26 +141,69 @@ a:hover {
     color: skyblue;
 }
 
-@media (max-width: 660px) {
+
+/* ---- Tablets (601px to 900px) ---- */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    header {
+        font-size: 1.4rem;
+    }
+
+    nav a {
+        margin: 0 8px;
+        font-size: 1rem;
+    }
+
     .login-container {
-        width: 90%;
-        padding: 20px;
+        width: 80%;
+        margin: 12% auto;
+        padding: 35px;
     }
 
-    body {
-        background: #f4f7fb;
-        color: #333;
-        background-image: url(image/lock.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        max-height: 100vh;
+    .container {
+        width: 85%;
+        padding: 1.5rem;
     }
 
-    h1 {
-        font-size: 20px;
+    button {
+        padding: 10px 15px;
+    }
+}
+
+/* ---- Laptops (901px to 1200px) ---- */
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+    .login-container {
+        width: 420px;
+        padding: 40px;
     }
 
-    a {
-        font-size: 14px;
+    .container {
+        max-width: 750px;
+    }
+
+    nav a {
+        font-size: 1.05rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}
+
+/* ---- Desktops (1201px and above) ---- */
+@media screen and (min-width: 1201px) {
+    .login-container {
+        width: 450px;
+    }
+
+    .container {
+        max-width: 800px;
+    }
+
+    nav a {
+        font-size: 1.1rem;
+    }
+
+    button {
+        padding: 12px 25px;
     }
 }

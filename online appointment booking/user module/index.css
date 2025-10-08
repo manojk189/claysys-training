@@ -114,47 +114,57 @@ body {
 }
 
 
-
-
-
-/* Mobile Devices (up to 600px) */
 @media screen and (max-width: 600px) {
+    body {
+        height: auto;
+        overflow: auto;
+        padding: 20px 0;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .hero-content {
+        max-width: 90%;
+        padding: 15px;
+    }
+
     .hero-content h1 {
         font-size: 2rem;
+        text-align: center;
+        animation: typing 2s steps(15, end) forwards, blink 0.75s step-end infinite;
     }
 
     .hero-content p {
-        font-size: 1.3rem;
-       text-align: justify;
+        font-size: 1rem;
+        text-align: justify;
     }
 
     .buttons {
         flex-direction: column;
         gap: 10px;
+        width: 100%;
     }
 
     .btn {
         width: 100%;
         padding: 10px 0;
+        font-size: 0.95rem;
     }
-
-    .hero-content {
-        padding: 15px;
-        padding-top: 0px;
-    }
-
-    body {
-        height: auto;
-        padding: 20px 0;
-        overflow: auto;
-    }
-
 }
 
-/* Tablets (601px to 900px) */
+/* ---- Tablets (601px to 900px) ---- */
 @media screen and (min-width: 601px) and (max-width: 900px) {
+    .hero-content {
+        max-width: 600px;
+        padding: 25px;
+    }
+
     .hero-content h1 {
         font-size: 2.5rem;
+        animation: typing 2.5s steps(18, end) forwards, blink 0.75s step-end infinite;
     }
 
     .hero-content p {
@@ -162,22 +172,24 @@ body {
     }
 
     .buttons {
-        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        gap: 12px;
     }
 
     .btn {
-        padding: 10px 20px;
-    }
-
-    .hero-content {
-        padding: 20px;
+        padding: 10px 22px;
+        font-size: 1rem;
     }
 }
 
-/* Laptops (901px to 1200px) */
+/* ---- Laptops (901px to 1200px) ---- */
 @media screen and (min-width: 901px) and (max-width: 1200px) {
+    .hero-content {
+        max-width: 650px;
+        padding: 30px;
+    }
+
     .hero-content h1 {
         font-size: 2.8rem;
     }
@@ -191,8 +203,12 @@ body {
     }
 }
 
-/* Desktops (1201px and above) */
+/* ---- Desktops (1201px and above) ---- */
 @media screen and (min-width: 1201px) {
+    .hero-content {
+        max-width: 750px;
+    }
+
     .hero-content h1 {
         font-size: 3rem;
     }
@@ -205,3 +221,7 @@ body {
         padding: 12px 30px;
     }
 }
+
+
+
+
