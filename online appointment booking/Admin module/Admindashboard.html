@@ -82,8 +82,10 @@
     <div id="adminLoginArea" style="display:none; padding:40px; max-width:420px; margin:40px auto;">
         <div class="login-card">
             <h2>Admin Login</h2>
-            <div class="field"><label>Email</label><input id="admin-login-email" type="text" placeholder="admin@demo.com"></div>
-            <div class="field"><label>Password</label><input id="admin-login-password" type="password" placeholder="password"></div>
+            <div class="field"><label>Email</label><input id="admin-login-email" type="text"
+                    placeholder="admin@demo.com"></div>
+            <div class="field"><label>Password</label><input id="admin-login-password" type="password"
+                    placeholder="password"></div>
             <div id="admin-login-error" style="color:darkred;margin:8px 0"></div>
             <div style="display:flex;gap:8px;justify-content:space-between;align-items:center;margin-top:8px;">
                 <div>
@@ -175,7 +177,7 @@
         if (isAdminLoggedIn()) showDashboardView(); else showLoginView();
 
         // --- Diagnostic/repair: ensure dashboard is visible and try to render, show helpful messages ---
-        (function dashboardDiagnose(){
+        (function dashboardDiagnose() {
             const out = document.getElementById('report-output');
             try {
                 // force dashboard visible for debugging
@@ -202,6 +204,8 @@
             }
         })();
     </script>
+
+    <script src="admin.js"></script>
 </body>
 
 </html>
