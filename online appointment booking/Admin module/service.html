@@ -26,12 +26,12 @@
                 <input id="sv-name" placeholder="Service Name" required />
                 <input id="sv-duration" placeholder="Duration (minutes)" type="number" min="1" required />
                 <input id="sv-price" placeholder="Price" type="number" min="0" step="0.01" required />
-                <select id="sv-provider">
-                    <option value="">Select main provider</option>
-                    <option value="">Cardiologist</option>
-                    <option value="">Skin Care</option>
-                    <option value="">Dermatologist</option>
-                    <option value="">pediatrician</option>
+                <select id="sv-provider" name="sv-provider">
+                    <option value="" disabled selected>Select main provider</option>
+                    <option value="Cardiologist">Cardiologist</option>
+                    <option value="Skin Care">Skin Care</option>
+                    <option value="Dermatologist">Dermatologist</option>
+                    <option value="Pediatrician">Pediatrician</option>
                 </select>
                 <textarea id="sv-desc" placeholder="Description"></textarea>
                 <div style="grid-column:1 /-1;">

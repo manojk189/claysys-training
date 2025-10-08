@@ -126,7 +126,14 @@ function initServicePage() {
   // load providers (from users with role provider)
   function fillProviders() {
     const users = read('users');
-    providerSelect.innerHTML = '<option value="">Select main provider (optional)</option>';
+    // create a non-selectable placeholder option
+    providerSelect.innerHTML = '';
+    const placeholder = document.createElement('option');
+    placeholder.value = '';
+    placeholder.disabled = true;
+    placeholder.selected = true;
+    placeholder.textContent = 'Select main provider (optional)';
+    providerSelect.appendChild(placeholder);
     users.filter(u => u.role === 'provider').forEach(p => {
       const opt = document.createElement('option'); opt.value = p.name; opt.textContent = p.name;
       providerSelect.appendChild(opt);
@@ -167,13 +174,15 @@ function initServicePage() {
       provider: document.getElementById('sv-provider').value,
       availability: availList.slice()
     };
-    services.push(newService);
-    write('services', services);
-    // reset
-    form.reset();
-    availList = []; renderAvail();
-    renderServices(); fillServiceFilterOptions(); fillProviders();
-    alert('Service added');
+  services.push(newService);
+  write('services', services);
+  // reset
+  form.reset();
+  availList = []; renderAvail();
+  renderServices(); fillServiceFilterOptions(); fillProviders();
+  // update dashboard counts
+  try { renderDashboard(); } catch (e) { /* dashboard may not be on this page */ }
+  alert('Service added');
   });
 
   // clear
@@ -189,13 +198,15 @@ function initServicePage() {
     const duration = prompt('Duration (min):', s.duration); if (duration === null) return;
     const price = prompt('Price:', s.price); if (price === null) return;
     s.name = name; s.duration = parseInt(duration, 10) || s.duration; s.price = parseFloat(price) || s.price;
-    write('services', services); renderServices(); fillServiceFilterOptions();
-    alert('Service updated');
+  write('services', services); renderServices(); fillServiceFilterOptions();
+  try { renderDashboard(); } catch (e) { }
+  alert('Service updated');
   };
 
   window.deleteService = function (serviceId) {
     if (!confirm('Delete this service?')) return;
-    let services = read('services'); services = services.filter(s => s.id !== serviceId); write('services', services); renderServices(); fillServiceFilterOptions();
+  let services = read('services'); services = services.filter(s => s.id !== serviceId); write('services', services); renderServices(); fillServiceFilterOptions();
+  try { renderDashboard(); } catch (e) { }
   };
   window.refreshProviders = fillProviders;
   fillServiceFilterOptions();
@@ -269,6 +280,7 @@ window.rescheduleAppointment = function (id) {
   if (!newDate) return;
   const newTime = prompt('New time (HH:MM):', app.time); if (!newTime) return;
   app.date = newDate; app.time = newTime; write('appointments', apps); renderAppointmentsTable(); alert('Rescheduled');
+  try { renderDashboard(); } catch (e) { }
 };
 
 window.cancelAppointment = function (id) {
@@ -276,6 +288,7 @@ window.cancelAppointment = function (id) {
   const apps = read('appointments'); const app = apps.find(a => a.id === id);
   if (!app) return alert('Not found');
   app.status = 'Cancelled'; write('appointments', apps); renderAppointmentsTable(); alert('Cancelled');
+  try { renderDashboard(); } catch (e) { }
 };
 
 window.changeAppointmentStatus = function (id) {
@@ -284,6 +297,7 @@ window.changeAppointmentStatus = function (id) {
   const next = prompt('Set status (Confirmed / Completed / Cancelled):', app.status);
   if (!next) return;
   app.status = next; write('appointments', apps); renderAppointmentsTable(); alert('Status updated');
+  try { renderDashboard(); } catch (e) { }
 };
 
 // ----------------- User Management -----------------
@@ -300,9 +314,11 @@ function initUsersPage() {
     const password = document.getElementById('admin-user-password').value || 'changeme';
     const users = read('users');
     if (users.some(u => u.email === email)) return alert('Email already exists');
-    users.push({ id: Date.now(), name, email, phone, role, password, status: 'active' });
-    write('users', users);
-    form.reset(); renderUserTable(); window.refreshProviders && window.refreshProviders(); alert('User added');
+  users.push({ id: Date.now(), name, email, phone, role, password, status: 'active' });
+  write('users', users);
+  form.reset(); renderUserTable(); window.refreshProviders && window.refreshProviders();
+  try { renderDashboard(); } catch (e) { }
+  alert('User added');
   });
 }
 
@@ -326,13 +342,50 @@ function renderUserTable() {
 }
 
 window.editUser = function (userId) {
-  const users = read('users'); const u = users.find(x => x.id === userId); if (!u) return alert('Not found');
-  const name = prompt('Name:', u.name); if (name === null) return;
-  const phone = prompt('Phone:', u.phone); if (phone === null) return;
-  const role = prompt('Role (user/provider/admin):', u.role); if (role === null) return;
-  u.name = name; u.phone = phone; u.role = role;
-  write('users', users); renderUserTabl
+  const users = read('users');
+  const u = users.find(x => x.id === userId);
+  if (!u) return alert('Not found');
+  const name = prompt('Name:', u.name);
+  if (name === null) return;
+  const phone = prompt('Phone:', u.phone);
+  if (phone === null) return;
+  const role = prompt('Role (user/provider/admin):', u.role);
+  if (role === null) return;
+  u.name = name;
+  u.phone = phone;
+  u.role = role;
+  write('users', users);
+  renderUserTable();
+  // refresh provider lists on other pages (if present)
+  window.refreshProviders && window.refreshProviders();
+  try { renderDashboard(); } catch (e) { }
+  alert('User updated');
 }
+
+// delete user
+window.deleteUser = function (userId) {
+  if (!confirm('Delete this user?')) return;
+  let users = read('users') || [];
+  const idx = users.findIndex(u => u.id === userId);
+  if (idx === -1) return alert('User not found');
+  users.splice(idx, 1);
+  write('users', users);
+  renderUserTable();
+  window.refreshProviders && window.refreshProviders();
+  try { renderDashboard(); } catch (e) { }
+  alert('User deleted');
+};
+
+// toggle user status (activate/deactivate)
+window.toggleUserStatus = function (userId) {
+  const users = read('users') || [];
+  const u = users.find(x => x.id === userId);
+  if (!u) return alert('User not found');
+  u.status = (u.status === 'deactivated') ? 'active' : 'deactivated';
+  write('users', users);
+  renderUserTable();
+  alert(`User ${u.status === 'deactivated' ? 'deactivated' : 'activated'}`);
+};
 // ----------------- Admin Login -----------------
 function initAdminLogin() {
   const form = document.getElementById('admin-login-form');

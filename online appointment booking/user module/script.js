@@ -98,8 +98,13 @@ if (document.getElementById("upcoming-appointments")) {
   function loadAppointments() {
     upcomingDiv.innerHTML = "";
     historyDiv.innerHTML = "";
-    const userAppointments = appointments.filter(a => a.user === currentUser.email);
-    userAppointments.forEach((appt, index) => {
+    if (!currentUser || !Array.isArray(appointments)) return;
+
+    const userAppointments = appointments
+      .map((a, i) => ({ ...a, __origIndex: i }))
+      .filter(a => a.user === currentUser.email);
+
+    userAppointments.forEach(appt => {
       const card = document.createElement("div");
       card.className = "appointment-card";
       card.innerHTML = `
@@ -109,24 +114,33 @@ if (document.getElementById("upcoming-appointments")) {
         <p><b>Time:</b> ${appt.time}</p>
         <p><b>Status:</b> ${appt.status}</p>
       `;
+
       if (appt.status === "Upcoming") {
         const actions = document.createElement("div");
         actions.className = "actions";
-        actions.innerHTML = `
-          <button onclick="reschedule(${index})">Reschedule</button>
-          <button onclick="cancelAppt(${index})">Cancel</button>
-        `;
+
+        const resBtn = document.createElement("button");
+        resBtn.textContent = "Reschedule";
+        resBtn.addEventListener("click", () => reschedule(appt.__origIndex));
+
+        const cancelBtn = document.createElement("button");
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => cancelAppt(appt.__origIndex));
+
+        actions.appendChild(resBtn);
+        actions.appendChild(cancelBtn);
         card.appendChild(actions);
         upcomingDiv.appendChild(card);
       } else {
         historyDiv.appendChild(card);
       }
     });
-}
+  }
 
   loadAppointments();
 
   window.reschedule = function (index) {
+    if (typeof index !== 'number' || !appointments[index]) return alert('Could not find appointment to reschedule.');
     const newDate = prompt("Enter new date (YYYY-MM-DD):");
     const newTime = prompt("Enter new time (HH:MM):");
     if (newDate && newTime) {
@@ -139,6 +153,7 @@ if (document.getElementById("upcoming-appointments")) {
   };
 
   window.cancelAppt = function (index) {
+    if (typeof index !== 'number' || !appointments[index]) return alert('Could not find appointment to cancel.');
     appointments[index].status = "Cancelled";
     localStorage.setItem("appointments", JSON.stringify(appointments));
     alert("Appointment cancelled!");
