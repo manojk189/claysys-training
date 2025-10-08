@@ -185,7 +185,7 @@
 
         .nav a {
             display: block;
-            padding: 2px ;
+            padding: 2px;
             text-decoration: none;
             color: violet;
             border-radius: 5px;
@@ -199,24 +199,181 @@
             font-weight: bolder;
         }
 
-        /* responsive */
-        @media (max-width:600px) {
-            .grid {
-                grid-template-columns: repeat(1, 1fr)
+        .ground {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #ee7752, rgb(240, 240, 177), #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .num {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+
+        }
+
+        .use {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .mod {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .45);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tan {
+            background: var(--card);
+            padding: 16px;
+            border-radius: 10px;
+            min-width: 320px;
+            max-width: 720px;
+            box-shadow: 0 12px 40px rgba(2, 6, 23, .3);
+        }
+
+        .bin {
+            text-align: right;
+            margin-top: 12px;
+        }
+
+
+        @media screen and (max-width: 600px) {
+            .app {
+                flex-direction: column;
+                height: auto;
             }
 
             .sidebar {
                 width: 100%;
-                background: #71dede;
-                color: #fff;
-                padding: 2px;
-                display: flex;
-                flex-direction: column;
-                border: 2px solid rgba(255, 255, 255, .08);
+                padding: 10px;
+                text-align: center;
             }
 
+            .nav {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .nav a {
+                font-size: 0.9rem;
+                margin: 3px;
+            }
+
+            .main {
+                padding: 12px;
+                border: none;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 10px;
+            }
+
+            .login-card {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        /* 📲 Tablets (601px – 900px) */
+        @media screen and (min-width: 601px) and (max-width: 900px) {
+            .sidebar {
+                width: 200px;
+                padding: 15px;
+            }
+
+            .main {
+                padding: 18px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card {
+                padding: 12px;
+            }
+
+            .login-card {
+                width: 320px;
+            }
+        }
+
+        /* 💻 Laptops (901px – 1200px) */
+        @media screen and (min-width: 901px) and (max-width: 1200px) {
+            .sidebar {
+                width: 230px;
+            }
+
+            .main {
+                padding: 20px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .login-card {
+                width: 340px;
+            }
+        }
+
+        /* 🖥️ Desktop (1201px and above) */
+        @media screen and (min-width: 1201px) {
             .app {
-                flex-direction: column
+                flex-direction: row;
+            }
+
+            .sidebar {
+                width: 260px;
+            }
+
+            .main {
+                padding: 24px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .login-card {
+                width: 360px;
             }
         }
     </style>
@@ -225,14 +382,15 @@
 <body>
 
     <div id="root">
+        <div class="ground"></div>
         <!-- Login screen -->
         <div id="loginScreen" class="center">
             <div class="login-card">
                 <h2>Admin Login</h2>
                 <div class="field"><label>Username</label><input id="loginUser" type="text" value="admin"></div>
                 <div class="field"><label>Password</label><input id="loginPass" type="password" value="admin"></div>
-                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-                    <div class="notice">Use <strong>admin</strong> / <strong>admin</strong></div>
+                <div class="num">
+
                     <button id="loginBtn">Login</button>
                 </div>
             </div>
@@ -292,8 +450,8 @@
                     <section id="usersView" style="display:none">
                         <div class="card">
                             <h4>User Management</h4>
-                            <div
-                                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                            <div class="use">
+
                                 <div class="notice">Users registered in the system</div>
                                 <div><button id="addUserBtn">Add User</button></div>
                             </div>
@@ -315,8 +473,7 @@
                     <section id="servicesView" style="display:none">
                         <div class="card">
                             <h4>Service Management</h4>
-                            <div
-                                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                            <div class="use">
                                 <div class="notice">Add, edit or remove services</div>
                                 <div><button id="addServiceBtn">Add Service</button></div>
                             </div>
@@ -338,8 +495,7 @@
                     <section id="appointmentsView" style="display:none">
                         <div class="card">
                             <h4>Appointment Management</h4>
-                            <div
-                                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                            <div class="use">
                                 <div class="notice">View and manage appointments</div>
                                 <div><button id="addAppointmentBtn">Add Appointment</button></div>
                             </div>
@@ -358,19 +514,16 @@
                             </table>
                         </div>
                     </section>
-
                 </main>
             </div>
         </div>
     </div>
 
     <!-- Simple modal area -->
-    <div id="modal"
-        style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);align-items:center;justify-content:center">
-        <div
-            style="background:var(--card);padding:16px;border-radius:10px;min-width:320px;max-width:720px;box-shadow:0 12px 40px rgba(2,6,23,.3)">
+    <div id="modal" class="mod">
+        <div class="tan">
             <div id="modalContent"></div>
-            <div style="text-align:right;margin-top:12px"><button id="modalClose">Close</button></div>
+            <div class="bin"><button id="modalClose">Close</button></div>
         </div>
     </div>
 
