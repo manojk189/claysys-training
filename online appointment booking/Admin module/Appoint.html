@@ -2,66 +2,66 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Appointment Management</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Appointment Management</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header>
-    <h1>Appointment Management</h1>
-  </header>
-  <nav>
-    <a href="Admindashboard.html">Dashboard</a>
-    <a href="service.html">Services</a>
-    <a href="Appoint.html" class="active">Appointments</a>
-    <a href="user.html">Users</a>
-  </nav>
+    <header>
+        <h1>Appointment Management</h1>
+    </header>
+    <nav>
+        <a href="Admindashboard.html">Dashboard</a>
+        <a href="service.html">Services</a>
+        <a href="Appoint.html" class="active">Appointments</a>
+        <a href="user.html">Users</a>
+    </nav>
 
-  <div class="container">
-    <div class="card">
-      <h3>Filters</h3>
-      <div class="filter-row">
-        <select id="filter-service">
-          <option value="">All services</option>
-          <option value="">Dental</option>
-          <option value="">Cardiologist</option>
-        </select>
-        <select id="filter-provider">
-          <option value="">All providers</option>
-        </select>
-        <input id="filter-date" type="date" />
-        <button id="apply-filters" class="btn">Apply</button>
-        <button id="reset-filters" class="btn secondary">Reset</button>
-      </div>
+    <div class="container">
+        <div class="card">
+            <h3>Filters</h3>
+            <div class="filter-row">
+                <select id="filter-service">
+                    <option value="">All services</option>
+                    <option value="">Dental</option>
+                    <option value="">Cardiologist</option>
+                </select>
+                <select id="filter-provider">
+                    <option value="">All providers</option>
+                </select>
+                <input id="filter-date" type="date" />
+                <button id="apply-filters" class="btn">Apply</button>
+                <button id="reset-filters" class="btn secondary">Reset</button>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+            <h3>Appointments</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Service</th>
+                            <th>Provider</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointments-table"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <div class="card" style="margin-top:12px;">
-      <h3>Appointments</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Service</th>
-              <th>Provider</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="appointments-table"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <script src="admin.js"></script>
-  <script>
-    initAppointmentsPage();
-  </script>
+    <script src="admin.js"></script>
+    <script>
+        initAppointmentsPage();
+    </script>
 </body>
 
 </html>
