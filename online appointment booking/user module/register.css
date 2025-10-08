@@ -1,3 +1,37 @@
+/* Responsive Design */
+@media (max-width: 600px) {
+    .login-container, .container {
+        width: 98%;
+        padding: 12px;
+        margin: 18% auto;
+    }
+    header h1, .login-container h2 {
+        font-size: 1.3rem;
+    }
+    nav {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+    .login-container, .container {
+        width: 80%;
+        padding: 24px;
+        margin: 12% auto;
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .login-container, .container {
+        width: 60%;
+        padding: 32px;
+        margin: 8% auto;
+    }
+}
+@media (min-width: 1201px) {
+    .login-container, .container {
+        width: 450px;
+    }
+}
 * {
     margin: 0;
     padding: 0;
@@ -133,41 +167,126 @@ h1:hover {
         background-position: 0% 50%;
     }
 }
-    /* Mobile (<= 600px) */
-    @media screen and (max-width: 600px) {
-        body { background-size: cover; background-position: top; font-size: 15px; }
-        header { font-size: 1.0rem; padding: 0.8rem; }
-        nav a { display: block; margin: 8px 0; font-size: 1rem; }
-        .login-container { width: 92%; margin: 12% auto; padding: 20px; border-radius: 12px; }
-        .login-container h2 { font-size: 1.3rem; }
-        input, select, button { font-size: 0.95rem; padding: 9px; }
-        button { width: 100%; }
-        .container { width: 96%; padding: 1rem; }
-        h2 { font-size: 1.25rem; text-align: center; }
-        .appointment-card { padding: 0.8rem; }
+
+/* Mobile (<= 600px) */
+@media screen and (max-width: 600px) {
+    body {
+        background-size: cover;
+        background-position: top;
+        font-size: 15px;
     }
 
-    /* Tablet (601px - 900px) */
-    @media screen and (min-width: 601px) and (max-width: 900px) {
-        header { font-size: 1.35rem; }
-        nav a { margin: 0 8px; font-size: 1rem; }
-        .login-container { width: 72%; margin: 10% auto; padding: 30px; }
-        .container { width: 88%; padding: 1.25rem; }
-        button { padding: 10px 15px; }
+    header {
+        font-size: 1.0rem;
+        padding: 0.8rem;
     }
 
-    /* Laptop (901px - 1200px) */
-    @media screen and (min-width: 901px) and (max-width: 1200px) {
-        .login-container { width: 420px; padding: 36px; margin: 8% auto; }
-        .container { max-width: 800px; }
-        nav a { font-size: 1.05rem; }
-        button { font-size: 1rem; }
+    nav a {
+        display: block;
+        margin: 8px 0;
+        font-size: 1rem;
     }
 
-    /* Desktop (>= 1201px) */
-    @media screen and (min-width: 1201px) {
-        .login-container { width: 480px; }
-        .container { max-width: 900px; }
-        nav a { font-size: 1.1rem; }
-        button { padding: 12px 25px; }
+    .login-container {
+        width: 92%;
+        margin: 12% auto;
+        padding: 20px;
+        border-radius: 12px;
     }
+
+    .login-container h2 {
+        font-size: 1.3rem;
+    }
+
+    input,
+    select,
+    button {
+        font-size: 0.95rem;
+        padding: 9px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .container {
+        width: 96%;
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+        text-align: center;
+    }
+
+    .appointment-card {
+        padding: 0.8rem;
+    }
+}
+
+/* Tablet (601px - 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    header {
+        font-size: 1.35rem;
+    }
+
+    nav a {
+        margin: 0 8px;
+        font-size: 1rem;
+    }
+
+    .login-container {
+        width: 72%;
+        margin: 10% auto;
+        padding: 30px;
+    }
+
+    .container {
+        width: 88%;
+        padding: 1.25rem;
+    }
+
+    button {
+        padding: 10px 15px;
+    }
+}
+
+/* Laptop (901px - 1200px) */
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+    .login-container {
+        width: 420px;
+        padding: 36px;
+        margin: 8% auto;
+    }
+
+    .container {
+        max-width: 800px;
+    }
+
+    nav a {
+        font-size: 1.05rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}
+
+/* Desktop (>= 1201px) */
+@media screen and (min-width: 1201px) {
+    .login-container {
+        width: 480px;
+    }
+
+    .container {
+        max-width: 900px;
+    }
+
+    nav a {
+        font-size: 1.1rem;
+    }
+
+    button {
+        padding: 12px 25px;
+    }
+}
