@@ -1,3 +1,37 @@
+/* Responsive Design */
+@media (max-width: 600px) {
+    .login-container {
+        width: 95%;
+        padding: 18px;
+        margin: 18% auto;
+    }
+    header h1, .login-container h2 {
+        font-size: 1.3rem;
+    }
+    nav {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+    .login-container {
+        width: 80%;
+        padding: 28px;
+        margin: 12% auto;
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .login-container {
+        width: 60%;
+        padding: 36px;
+        margin: 8% auto;
+    }
+}
+@media (min-width: 1201px) {
+    .login-container {
+        width: 450px;
+    }
+}
 * {
     margin: 0;
     padding: 0;
@@ -143,9 +177,16 @@ a:hover {
 
 /* Mobile (<= 600px) */
 @media screen and (max-width: 600px) {
-    header { font-size: 1.1rem; padding: 0.8rem; }
+    header {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
 
-    nav a { display: block; margin: 8px 0; font-size: 1rem; }
+    nav a {
+        display: block;
+        margin: 8px 0;
+        font-size: 1rem;
+    }
 
     .login-container {
         width: 92%;
@@ -154,34 +195,83 @@ a:hover {
         border-radius: 12px;
     }
 
-    .login-container h2 { font-size: 1.4rem; }
+    .login-container h2 {
+        font-size: 1.4rem;
+    }
 
-    input, select, button { font-size: 0.95rem; padding: 9px; }
+    input,
+    select,
+    button {
+        font-size: 0.95rem;
+        padding: 9px;
+    }
 
-    .container { width: 96%; padding: 1rem; }
+    .container {
+        width: 96%;
+        padding: 1rem;
+    }
 
-    h2 { text-align: center; font-size: 1.15rem; }
+    h2 {
+        text-align: center;
+        font-size: 1.15rem;
+    }
 }
 
 /* Tablet (601px - 900px) */
 @media screen and (min-width: 601px) and (max-width: 900px) {
-    .login-container { width: 72%; margin: 12% auto; padding: 30px; }
-    header { font-size: 1.3rem; }
-    nav a { margin: 0 12px; font-size: 1.05rem; }
-    .container { width: 88%; padding: 1.25rem; }
+    .login-container {
+        width: 72%;
+        margin: 12% auto;
+        padding: 30px;
+    }
+
+    header {
+        font-size: 1.3rem;
+    }
+
+    nav a {
+        margin: 0 12px;
+        font-size: 1.05rem;
+    }
+
+    .container {
+        width: 88%;
+        padding: 1.25rem;
+    }
 }
 
 /* Laptop (901px - 1200px) */
 @media screen and (min-width: 901px) and (max-width: 1200px) {
-    .login-container { width: 420px; margin: 10% auto; padding: 36px; }
-    nav a { font-size: 1.05rem; }
-    .container { max-width: 800px; }
+    .login-container {
+        width: 420px;
+        margin: 10% auto;
+        padding: 36px;
+    }
+
+    nav a {
+        font-size: 1.05rem;
+    }
+
+    .container {
+        max-width: 800px;
+    }
 }
 
 /* Desktop (>= 1201px) */
 @media screen and (min-width: 1201px) {
-    .login-container { width: 480px; }
-    nav a { font-size: 1.1rem; }
-    .container { max-width: 900px; }
-    button { padding: 12px 25px; }
+    .login-container {
+        width: 480px;
+    }
+
+    nav a {
+        font-size: 1.1rem;
+    }
+
+    .container {
+        max-width: 900px;
+    }
+
+    button {
+        padding: 12px 25px;
+    }
 }
