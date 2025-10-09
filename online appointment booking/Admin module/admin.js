@@ -372,9 +372,9 @@ function renderAppointmentsTable() {
     if (filterDate) filtered = filtered.filter(a => a.date === filterDate);
 
     t.innerHTML = filtered.map(a => {
-                const userDisplay = a.userName || a.user || (users.find(u => u.id === a.userId)?.name) || (users.find(u => u.email === a.user)?.name) || '—';
-                const serviceDisplay = a.serviceName || a.service || (services.find(s => s.id === a.serviceId)?.name) || '—';
-                return `<tr>
+        const userDisplay = a.userName || a.user || (users.find(u => u.id === a.userId)?.name) || (users.find(u => u.email === a.user)?.name) || '—';
+        const serviceDisplay = a.serviceName || a.service || (services.find(s => s.id === a.serviceId)?.name) || '—';
+        return `<tr>
             <td>${userDisplay}</td>
             <td>${serviceDisplay}</td>
             <td>${a.provider || '—'}</td>
@@ -592,105 +592,105 @@ function initAdminLogin() {
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSidebar(); });
 })();
 // Simple in-page auth gate: show login area when not authenticated
-        function isAdminLoggedIn() { return localStorage.getItem('admin_loggedin') === 'true'; }
+function isAdminLoggedIn() { return localStorage.getItem('admin_loggedin') === 'true'; }
 
-        function showDashboardView() {
-            const loginArea = document.getElementById('adminLoginArea');
-            const dash = document.getElementById('dashboardArea');
-            if (loginArea) loginArea.style.display = 'none';
-            if (dash) dash.style.display = 'block';
-            try { renderDashboard(); } catch (e) { console.warn('renderDashboard not available yet', e); }
-        }
+function showDashboardView() {
+    const loginArea = document.getElementById('adminLoginArea');
+    const dash = document.getElementById('dashboardArea');
+    if (loginArea) loginArea.style.display = 'none';
+    if (dash) dash.style.display = 'block';
+    try { renderDashboard(); } catch (e) { console.warn('renderDashboard not available yet', e); }
+}
 
-        function showLoginView() {
-            const loginArea = document.getElementById('adminLoginArea');
-            const dash = document.getElementById('dashboardArea');
-            if (dash) dash.style.display = 'none';
-            if (loginArea) loginArea.style.display = 'block';
-        }
+function showLoginView() {
+    const loginArea = document.getElementById('adminLoginArea');
+    const dash = document.getElementById('dashboardArea');
+    if (dash) dash.style.display = 'none';
+    if (loginArea) loginArea.style.display = 'block';
+}
 
-        // wire login button (in-page)
-        const adminLoginBtn = document.getElementById('adminLoginBtn');
-        if (adminLoginBtn) {
-            adminLoginBtn.addEventListener('click', function () {
-                const email = (document.getElementById('admin-login-email') || {}).value || '';
-                const pass = (document.getElementById('admin-login-password') || {}).value || '';
-                const users = JSON.parse(localStorage.getItem('users') || '[]');
-                const admin = users.find(u => (u.email === email || u.username === email) && u.password === pass && u.role === 'admin');
-                const err = document.getElementById('admin-login-error');
-                if (!admin) { if (err) err.textContent = 'Invalid admin credentials'; else alert('Invalid admin credentials'); return; }
-                if (admin.status === 'deactivated') { if (err) err.textContent = 'Admin account is deactivated'; else alert('Admin account is deactivated'); return; }
-                // persist admin session
-                localStorage.setItem('admin_loggedin', 'true');
-                localStorage.setItem('currentAdmin', JSON.stringify(admin));
-                // redirect to the dashboard page so the URL and view are consistent
-                window.location.href = 'Admindashboard.html';
-            });
-        }
+// wire login button (in-page)
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+if (adminLoginBtn) {
+    adminLoginBtn.addEventListener('click', function () {
+        const email = (document.getElementById('admin-login-email') || {}).value || '';
+        const pass = (document.getElementById('admin-login-password') || {}).value || '';
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        const admin = users.find(u => (u.email === email || u.username === email) && u.password === pass && u.role === 'admin');
+        const err = document.getElementById('admin-login-error');
+        if (!admin) { if (err) err.textContent = 'Invalid admin credentials'; else alert('Invalid admin credentials'); return; }
+        if (admin.status === 'deactivated') { if (err) err.textContent = 'Admin account is deactivated'; else alert('Admin account is deactivated'); return; }
+        // persist admin session
+        localStorage.setItem('admin_loggedin', 'true');
+        localStorage.setItem('currentAdmin', JSON.stringify(admin));
+        // redirect to the dashboard page so the URL and view are consistent
+        window.location.href = 'Admindashboard.html';
+    });
+}
 
-        // wire logout link to clear session and show login area
-        document.getElementById('logoutLink').addEventListener('click', function (e) {
-            e.preventDefault();
-            // clear admin session data
-            localStorage.removeItem('admin_loggedin');
-            localStorage.removeItem('currentAdmin');
-            // redirect back to main site index (assumption: ../user module/index.html)
-            // if your main index file uses .htm change the path accordingly.
-            window.location.href = '../user module/index.html';
-        });
+// wire logout link to clear session and show login area
+document.getElementById('logoutLink').addEventListener('click', function (e) {
+    e.preventDefault();
+    // clear admin session data
+    localStorage.removeItem('admin_loggedin');
+    localStorage.removeItem('currentAdmin');
+    // redirect back to main site index (assumption: ../user module/index.html)
+    // if your main index file uses .htm change the path accordingly.
+    window.location.href = '../user module/index.html';
+});
 
-        // dashboard buttons
-        const genBtn = document.getElementById('gen-report');
-        if (genBtn) genBtn.addEventListener('click', generateReport);
-        const expBtn = document.getElementById('export-csv');
-        if (expBtn) expBtn.addEventListener('click', exportAppointmentsCSV);
+// dashboard buttons
+const genBtn = document.getElementById('gen-report');
+if (genBtn) genBtn.addEventListener('click', generateReport);
+const expBtn = document.getElementById('export-csv');
+if (expBtn) expBtn.addEventListener('click', exportAppointmentsCSV);
 
-        // demo helpers
-        const demoBtn = document.getElementById('demoShowBtn');
-        if (demoBtn) demoBtn.addEventListener('click', function () {
-            console.info('Demo: showing dashboard without login');
-            showDashboardView();
-        });
+// demo helpers
+const demoBtn = document.getElementById('demoShowBtn');
+if (demoBtn) demoBtn.addEventListener('click', function () {
+    console.info('Demo: showing dashboard without login');
+    showDashboardView();
+});
 
-        const seedBtn = document.getElementById('seedDataBtn');
-        if (seedBtn) seedBtn.addEventListener('click', function () {
+const seedBtn = document.getElementById('seedDataBtn');
+if (seedBtn) seedBtn.addEventListener('click', function () {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (!users.find(u => u.role === 'admin')) {
+        users.push({ id: Date.now(), name: 'Admin User', username: 'admin', email: 'admin@demo.com', phone: '', role: 'admin', password: 'admin', status: 'active' });
+    }
+    if (!Array.isArray(JSON.parse(localStorage.getItem('services') || '[]'))) localStorage.setItem('services', JSON.stringify([]));
+    if (!Array.isArray(JSON.parse(localStorage.getItem('appointments') || '[]'))) localStorage.setItem('appointments', JSON.stringify([]));
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Demo data seeded. You can now click Show demo dashboard or login.');
+});
+
+// initialise view on load
+if (isAdminLoggedIn()) showDashboardView(); else showLoginView();
+
+// --- Diagnostic/repair: ensure dashboard is visible and try to render, show helpful messages ---
+(function dashboardDiagnose() {
+    const out = document.getElementById('report-output');
+    try {
+        // force dashboard visible for debugging
+        const dash = document.getElementById('dashboardArea');
+        const login = document.getElementById('adminLoginArea');
+        if (dash) dash.style.display = 'block';
+        if (login) login.style.display = 'none';
+
+        // attempt to render dashboard
+        if (typeof renderDashboard === 'function') {
+            renderDashboard();
             const users = JSON.parse(localStorage.getItem('users') || '[]');
-            if (!users.find(u => u.role === 'admin')) {
-                users.push({ id: Date.now(), name: 'Admin User', username: 'admin', email: 'admin@demo.com', phone: '', role: 'admin', password: 'admin', status: 'active' });
-            }
-            if (!Array.isArray(JSON.parse(localStorage.getItem('services') || '[]'))) localStorage.setItem('services', JSON.stringify([]));
-            if (!Array.isArray(JSON.parse(localStorage.getItem('appointments') || '[]'))) localStorage.setItem('appointments', JSON.stringify([]));
-            localStorage.setItem('users', JSON.stringify(users));
-            alert('Demo data seeded. You can now click Show demo dashboard or login.');
-        });
-
-        // initialise view on load
-        if (isAdminLoggedIn()) showDashboardView(); else showLoginView();
-
-        // --- Diagnostic/repair: ensure dashboard is visible and try to render, show helpful messages ---
-        (function dashboardDiagnose() {
-            const out = document.getElementById('report-output');
-            try {
-                // force dashboard visible for debugging
-                const dash = document.getElementById('dashboardArea');
-                const login = document.getElementById('adminLoginArea');
-                if (dash) dash.style.display = 'block';
-                if (login) login.style.display = 'none';
-
-                // attempt to render dashboard
-                if (typeof renderDashboard === 'function') {
-                    renderDashboard();
-                    const users = JSON.parse(localStorage.getItem('users') || '[]');
-                    const services = JSON.parse(localStorage.getItem('services') || '[]');
-                    const apps = JSON.parse(localStorage.getItem('appointments') || '[]');
-                    if (out) out.innerText = `Diagnostics:\nusers=${users.length}, services=${services.length}, appointments=${apps.length}`;
-                } else {
-                    const msg = 'renderDashboard() not found. Ensure admin.js is loaded and defines renderDashboard.';
-                    if (out) out.innerText = msg;
-                    console.warn(msg);
-                }
-            } catch (err) {
-                console.error(err);
-                if (out) out.innerText = 'Error rendering dashboard: ' + (err && err.message ? err.message : String(err));
-            }
-        })();
+            const services = JSON.parse(localStorage.getItem('services') || '[]');
+            const apps = JSON.parse(localStorage.getItem('appointments') || '[]');
+            if (out) out.innerText = `Diagnostics:\nusers=${users.length}, services=${services.length}, appointments=${apps.length}`;
+        } else {
+            const msg = 'renderDashboard() not found. Ensure admin.js is loaded and defines renderDashboard.';
+            if (out) out.innerText = msg;
+            console.warn(msg);
+        }
+    } catch (err) {
+        console.error(err);
+        if (out) out.innerText = 'Error rendering dashboard: ' + (err && err.message ? err.message : String(err));
+    }
+})();
