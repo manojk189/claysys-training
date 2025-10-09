@@ -364,14 +364,35 @@ body {
         font-size: 14px;
     }
 
-    /* mobile: allow tables to be scrolled horizontally and reduce min-width */
+    /* mobile: allow tables to shrink and wrap cells instead of forcing horizontal scroll */
     .table-responsive table {
-        min-width: 420px;
+        min-width: 100%;
+        table-layout: auto;
+    }
+
+    .table-responsive th,
+    .table-responsive td {
+        white-space: normal;
+        word-break: break-word;
     }
 
     .recent-activity>div {
         font-size: 13px;
         padding: 8px 6px;
+    }
+
+    /* on mobile stack report buttons and make report/recent content wrap */
+    .rep {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #report-output,
+    .can,
+    #recent-activity {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 
     /* stack cards and make dashboard single-column */

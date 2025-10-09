@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const errorMsg = document.getElementById('adminLoginError');
             // Hardcoded admin credentials
             if (username === 'admin' && password === 'admin123') {
-                localStorage.setItem('adminLoggedIn', 'true');
+                // use canonical admin session keys
+                localStorage.setItem('admin_loggedin', 'true');
                 window.location.href = 'Admindashboard.html';
             } else {
                 if (errorMsg) errorMsg.style.display = 'block';
@@ -22,13 +23,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (logoutLink) {
         logoutLink.addEventListener('click', function (e) {
             e.preventDefault();
-            localStorage.removeItem('adminLoggedIn');
+            // remove canonical key
+            localStorage.removeItem('admin_loggedin');
+            localStorage.removeItem('currentAdmin');
             window.location.href = '../user module/index.html';
         });
     }
     // Protect dashboard page
     if (window.location.pathname.includes('Admindashboard.html')) {
-        if (localStorage.getItem('adminLoggedIn') !== 'true') {
+        if (localStorage.getItem('admin_loggedin') !== 'true') {
             window.location.href = 'adminlogin.html';
         }
     }
@@ -130,7 +133,12 @@ function renderDashboard() {
     tableHtml += '<strong style="margin-top:8px;display:block">Recent bookings:</strong>';
     tableHtml += '<div class="table-responsive"><table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;color:skyblue;border:none"><thead><tr><th>User</th><th>Service</th><th>Date</th><th>Time</th></tr></thead><tbody>';
     if (recentApps.length === 0) tableHtml += '<tr><td colspan="4">No bookings</td></tr>';
-    recentApps.forEach(a => tableHtml += `<tr><td>${a.userName}</td><td>${a.serviceName}</td><td>${a.date}</td><td>${a.time}</td></tr>`);
+    recentApps.forEach(a => {
+        // tolerate multiple appointment shapes
+        const userDisplay = a.userName || a.user || (users.find(u => u.id === a.userId)?.name) || (users.find(u => u.email === a.user)?.name) || '—';
+        const serviceDisplay = a.serviceName || a.service || (services.find(s => s.id === a.serviceId)?.name) || '—';
+        tableHtml += `<tr><td>${userDisplay}</td><td>${serviceDisplay}</td><td>${a.date}</td><td>${a.time}</td></tr>`;
+    });
     tableHtml += '</tbody></table></div>';
     tableHtml += '</div>';
 
@@ -144,7 +152,11 @@ function renderDashboard() {
     cardHtml += '<div class="recent-bookings-cards" style="margin-top:8px">';
     cardHtml += '<h4>Recent bookings</h4>';
     if (recentApps.length === 0) cardHtml += '<div class="recent-card">No bookings</div>';
-    recentApps.forEach(a => cardHtml += `<div class="recent-card"><strong>${a.userName}</strong><div>${a.serviceName}</div><div>${a.date} ${a.time}</div></div>`);
+    recentApps.forEach(a => {
+        const userDisplay = a.userName || a.user || (users.find(u => u.id === a.userId)?.name) || (users.find(u => u.email === a.user)?.name) || '—';
+        const serviceDisplay = a.serviceName || a.service || (services.find(s => s.id === a.serviceId)?.name) || '—';
+        cardHtml += `<div class="recent-card"><strong>${userDisplay}</strong><div>${serviceDisplay}</div><div>${a.date} ${a.time}</div></div>`;
+    });
     cardHtml += '</div>';
     cardHtml += '</div>';
 
@@ -159,8 +171,15 @@ function renderDashboard() {
 function exportAppointmentsCSV() {
     const apps = read('appointments');
     if (apps.length === 0) { alert('No appointments to export'); return; }
-    const headers = ['id', 'userName', 'serviceName', 'provider', 'date', 'time', 'status'];
-    const rows = apps.map(a => headers.map(h => `"${(a[h] || '').toString().replace(/"/g, '""')}"`).join(','));
+    const headers = ['id', 'user', 'service', 'provider', 'date', 'time', 'status'];
+    const users = read('users');
+    const services = read('services');
+    const rows = apps.map(a => {
+        const userDisplay = a.userName || a.user || (users.find(u => u.id === a.userId)?.name) || (users.find(u => u.email === a.user)?.name) || '';
+        const serviceDisplay = a.serviceName || a.service || (services.find(s => s.id === a.serviceId)?.name) || '';
+        const out = [a.id || '', userDisplay, serviceDisplay, a.provider || '', a.date || '', a.time || '', a.status || ''];
+        return out.map(v => `"${(v || '').toString().replace(/"/g, '""')}"`).join(',');
+    });
     const csv = [headers.join(','), ...rows].join('\n');
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
@@ -353,19 +372,21 @@ function renderAppointmentsTable() {
     if (filterDate) filtered = filtered.filter(a => a.date === filterDate);
 
     t.innerHTML = filtered.map(a => {
-        return `<tr>
-      <td>${a.userName || (users.find(u => u.id === a.userId)?.name || '—')}</td>
-      <td>${a.serviceName}</td>
-      <td>${a.provider}</td>
-      <td>${a.date}</td>
-      <td>${a.time}</td>
-      <td>${a.status}</td>
-      <td class="actions">
-        <button class="edit" onclick="rescheduleAppointment(${a.id})">Reschedule</button>
-        <button class="delete" onclick="cancelAppointment(${a.id})">Cancel</button>
-        <button class="status" onclick="changeAppointmentStatus(${a.id})">Mark</button>
-      </td>
-    </tr>`;
+                const userDisplay = a.userName || a.user || (users.find(u => u.id === a.userId)?.name) || (users.find(u => u.email === a.user)?.name) || '—';
+                const serviceDisplay = a.serviceName || a.service || (services.find(s => s.id === a.serviceId)?.name) || '—';
+                return `<tr>
+            <td>${userDisplay}</td>
+            <td>${serviceDisplay}</td>
+            <td>${a.provider || '—'}</td>
+            <td>${a.date || '—'}</td>
+            <td>${a.time || '—'}</td>
+            <td>${a.status || '—'}</td>
+            <td class="actions">
+                <button class="edit" onclick="rescheduleAppointment(${a.id})">Reschedule</button>
+                <button class="delete" onclick="cancelAppointment(${a.id})">Cancel</button>
+                <button class="status" onclick="changeAppointmentStatus(${a.id})">Mark</button>
+            </td>
+        </tr>`;
     }).join('');
     // if appointments table is inside a container where a full table tag exists, ensure responsiveness
     ensureTableResponsive(t);

@@ -164,8 +164,14 @@ button:hover {
     margin-bottom: 1rem;
 }
 
+.actions {
+    display: flex;
+    gap: 12px; /* space between action buttons */
+    flex-wrap: wrap;
+    align-items: center;
+}
 .actions button {
-    margin-right: 10px;
+    margin: 0; /* spacing is handled by gap */
 }
 
 h1:hover {

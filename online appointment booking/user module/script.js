@@ -220,3 +220,19 @@ function initAdminLogin() {
 
 // initialize admin login if the form exists on the page
 if (document.getElementById('admin-login-form')) initAdminLogin();
+
+// ----------------- USER LOGOUT (site-wide handler for user module) -----------------
+// Attach a delegated click handler to any element with class 'user-logout'
+document.addEventListener('click', function (e) {
+    const target = e.target;
+    if (!target) return;
+    if (target.classList && target.classList.contains('user-logout')) {
+        e.preventDefault();
+        // clear current user session and redirect to site index
+        currentUser = null;
+        localStorage.removeItem('currentUser');
+        // optional: also clear any UI flags you used
+        // redirect to index
+        window.location.href = 'index.html';
+    }
+});
