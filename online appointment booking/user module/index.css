@@ -39,7 +39,7 @@
 body {
     height: 100vh;
     overflow: hidden;
-    background: url(img/bg01.jpg);
+    background: url(image/doctor.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
