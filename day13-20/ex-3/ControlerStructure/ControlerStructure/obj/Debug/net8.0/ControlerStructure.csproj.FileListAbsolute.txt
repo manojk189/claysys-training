@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\bin\Debug\net8.0\ControlerStructure.exe
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\bin\Debug\net8.0\ControlerStructure.deps.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\bin\Debug\net8.0\ControlerStructure.runtimeconfig.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\bin\Debug\net8.0\ControlerStructure.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\bin\Debug\net8.0\ControlerStructure.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\ControlerStructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\ControlerStructure.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\ControlerStructure.AssemblyInfo.cs
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\ControlerStructure.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\ControlerStructure.sourcelink.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\ControlerStructure.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\refint\ControlerStructure.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\ControlerStructure.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\ControlerStructure.genruntimeconfig.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-3\ControlerStructure\ControlerStructure\obj\Debug\net8.0\ref\ControlerStructure.dll

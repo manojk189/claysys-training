@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\bin\Debug\net8.0\CollectionsAndGenerics.exe
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\bin\Debug\net8.0\CollectionsAndGenerics.deps.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\bin\Debug\net8.0\CollectionsAndGenerics.runtimeconfig.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\bin\Debug\net8.0\CollectionsAndGenerics.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\bin\Debug\net8.0\CollectionsAndGenerics.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\CollectionsAndGenerics.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\CollectionsAndGenerics.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\CollectionsAndGenerics.AssemblyInfo.cs
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\CollectionsAndGenerics.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\CollectionsAndGenerics.sourcelink.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\CollectionsAndGenerics.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\refint\CollectionsAndGenerics.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\CollectionsAndGenerics.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\CollectionsAndGenerics.genruntimeconfig.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-6\CollectionsAndGenerics\CollectionsAndGenerics\obj\Debug\net8.0\ref\CollectionsAndGenerics.dll
