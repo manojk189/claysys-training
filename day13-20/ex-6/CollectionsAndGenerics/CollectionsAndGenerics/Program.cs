@@ -45,6 +45,7 @@ class Program
         intStack.Push(20);
         intStack.Push(30);
         intStack.Display();
+
         Console.WriteLine($"Peek: {intStack.Peek()}");
         Console.WriteLine($"Pop: {intStack.Pop()}");
         intStack.Display();

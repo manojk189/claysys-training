@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\bin\Debug\net8.0\DelegatesEvents.exe
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\bin\Debug\net8.0\DelegatesEvents.deps.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\bin\Debug\net8.0\DelegatesEvents.runtimeconfig.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\bin\Debug\net8.0\DelegatesEvents.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\bin\Debug\net8.0\DelegatesEvents.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\DelegatesEvents.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\DelegatesEvents.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\DelegatesEvents.AssemblyInfo.cs
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\DelegatesEvents.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\DelegatesEvents.sourcelink.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\DelegatesEvents.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\refint\DelegatesEvents.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\DelegatesEvents.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\DelegatesEvents.genruntimeconfig.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-7\DelegatesEvents\DelegatesEvents\obj\Debug\net8.0\ref\DelegatesEvents.dll
