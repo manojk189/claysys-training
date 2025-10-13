@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\bin\Debug\net8.0\ObjectOriented.exe
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\bin\Debug\net8.0\ObjectOriented.deps.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\bin\Debug\net8.0\ObjectOriented.runtimeconfig.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\bin\Debug\net8.0\ObjectOriented.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\bin\Debug\net8.0\ObjectOriented.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\ObjectOriented.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\ObjectOriented.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\ObjectOriented.AssemblyInfo.cs
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\ObjectOriented.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\ObjectOriented.sourcelink.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\ObjectOriented.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\refint\ObjectOriented.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\ObjectOriented.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\ObjectOriented.genruntimeconfig.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-4\ObjectOriented\obj\Debug\net8.0\ref\ObjectOriented.dll
