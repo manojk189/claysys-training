@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\admin\\Desktop\\claysys-training\\day13-20\\ex-1\\HelloWorldApp\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{078F4CF5-0D5D-437E-A197-ED30F034FC62}|HelloWorldApp\\HelloWorldApp.csproj|c:\\users\\admin\\desktop\\claysys-training\\day13-20\\ex-1\\helloworldapp\\helloworldapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{078F4CF5-0D5D-437E-A197-ED30F034FC62}|HelloWorldApp\\HelloWorldApp.csproj|solutionrelative:helloworldapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,24 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\claysys-training\\day13-20\\ex-1\\HelloWorldApp\\HelloWorldApp\\Program.cs",
-              "RelativeDocumentMoniker": "HelloWorldApp\\Program.cs",
-              "ToolTip": "C:\\Users\\admin\\Desktop\\claysys-training\\day13-20\\ex-1\\HelloWorldApp\\HelloWorldApp\\Program.cs",
-              "RelativeToolTip": "HelloWorldApp\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T09:13:02.335Z",
-              "EditorCaption": ""
             }
           ]
         }
