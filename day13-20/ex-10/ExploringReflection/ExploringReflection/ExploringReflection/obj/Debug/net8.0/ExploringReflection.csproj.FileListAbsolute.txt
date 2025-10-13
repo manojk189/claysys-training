@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\bin\Debug\net8.0\ExploringReflection.exe
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\bin\Debug\net8.0\ExploringReflection.deps.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\bin\Debug\net8.0\ExploringReflection.runtimeconfig.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\bin\Debug\net8.0\ExploringReflection.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\bin\Debug\net8.0\ExploringReflection.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\ExploringReflection.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\ExploringReflection.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\ExploringReflection.AssemblyInfo.cs
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\ExploringReflection.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\ExploringReflection.sourcelink.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\ExploringReflection.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\refint\ExploringReflection.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\ExploringReflection.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\ExploringReflection.genruntimeconfig.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ExploringReflection\ExploringReflection\ExploringReflection\obj\Debug\net8.0\ref\ExploringReflection.dll

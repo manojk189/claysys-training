@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\bin\Debug\net8.0\LinqLanguage.exe
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\bin\Debug\net8.0\LinqLanguage.deps.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\bin\Debug\net8.0\LinqLanguage.runtimeconfig.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\bin\Debug\net8.0\LinqLanguage.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\bin\Debug\net8.0\LinqLanguage.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\LinqLanguage.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\LinqLanguage.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\LinqLanguage.AssemblyInfo.cs
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\LinqLanguage.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\LinqLanguage.sourcelink.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\LinqLanguage.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\refint\LinqLanguage.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\LinqLanguage.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\LinqLanguage.genruntimeconfig.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\LinqLanguage\LinqLanguage\obj\Debug\net8.0\ref\LinqLanguage.dll

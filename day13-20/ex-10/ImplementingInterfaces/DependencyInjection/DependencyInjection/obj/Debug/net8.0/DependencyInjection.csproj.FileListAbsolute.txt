@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\bin\Debug\net8.0\DependencyInjection.exe
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\bin\Debug\net8.0\DependencyInjection.deps.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\bin\Debug\net8.0\DependencyInjection.runtimeconfig.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\bin\Debug\net8.0\DependencyInjection.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\bin\Debug\net8.0\DependencyInjection.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\DependencyInjection.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\DependencyInjection.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\DependencyInjection.AssemblyInfo.cs
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\DependencyInjection.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\DependencyInjection.sourcelink.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\DependencyInjection.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\refint\DependencyInjection.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\DependencyInjection.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\DependencyInjection.genruntimeconfig.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-10\ImplementingInterfaces\DependencyInjection\DependencyInjection\obj\Debug\net8.0\ref\DependencyInjection.dll

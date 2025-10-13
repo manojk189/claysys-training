@@ -1,0 +1,3 @@
+[INFO] Application started.
+[WARNING] Low disk space.
+[ERROR] Unhandled exception occurred.

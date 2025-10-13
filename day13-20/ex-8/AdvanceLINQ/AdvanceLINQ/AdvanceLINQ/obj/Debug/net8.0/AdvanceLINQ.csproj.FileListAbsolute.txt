@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\bin\Debug\net8.0\AdvanceLINQ.exe
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\bin\Debug\net8.0\AdvanceLINQ.deps.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\bin\Debug\net8.0\AdvanceLINQ.runtimeconfig.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\bin\Debug\net8.0\AdvanceLINQ.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\bin\Debug\net8.0\AdvanceLINQ.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\AdvanceLINQ.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\AdvanceLINQ.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\AdvanceLINQ.AssemblyInfo.cs
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\AdvanceLINQ.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\AdvanceLINQ.sourcelink.json
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\AdvanceLINQ.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\refint\AdvanceLINQ.dll
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\AdvanceLINQ.pdb
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\AdvanceLINQ.genruntimeconfig.cache
+C:\Users\admin\Desktop\claysys-training\day13-20\ex-8\AdvanceLINQ\AdvanceLINQ\AdvanceLINQ\obj\Debug\net8.0\ref\AdvanceLINQ.dll
