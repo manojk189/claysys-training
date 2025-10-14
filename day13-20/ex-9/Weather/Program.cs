@@ -27,7 +27,7 @@ namespace WeatherForecastApp
 
             await Task.WhenAll(tasks);
 
-            Console.WriteLine("\n✅ Weather fetch complete.");
+            Console.WriteLine("\n Weather fetch complete.");
         }
 
         static async Task DisplayWeatherAsync(string city)
@@ -59,13 +59,13 @@ namespace WeatherForecastApp
                     double windKph = weatherData.current.wind_kph;
 
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine($"\n📍 Weather in {city}:");
+                    Console.WriteLine($"\n Weather in {city}:");
                     Console.ResetColor();
-                    Console.WriteLine($"🌡️ Temperature: {temp}°C");
-                    Console.WriteLine($"🤗 Feels Like: {feelsLike}°C");
-                    Console.WriteLine($"🌥️ Condition: {condition}");
-                    Console.WriteLine($"💧 Humidity: {humidity}%");
-                    Console.WriteLine($"🌬️ Wind Speed: {windKph} kph");
+                    Console.WriteLine($" Temperature: {temp}°C");
+                    Console.WriteLine($" Feels Like: {feelsLike}°C");
+                    Console.WriteLine($" Condition: {condition}");
+                    Console.WriteLine($" Humidity: {humidity}%");
+                    Console.WriteLine($" Wind Speed: {windKph} kph");
                 }
             }
             catch (Exception ex)

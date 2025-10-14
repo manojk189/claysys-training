@@ -13,12 +13,12 @@ namespace ClockEventDemo
         static void Main(string[] args)
         {
             Clock clock = new Clock();
-            Display display = new Display();
+            Display display = new Display();// shows the time 
 
             display.Subscribe(clock);
-            clock.Start();
+            clock.Start();// timer start
 
-            Console.WriteLine("Press Enter to exit...");
+            Console.WriteLine("Press Enter to exit...");-
             Console.ReadLine(); 
         }
     }
