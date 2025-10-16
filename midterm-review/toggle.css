@@ -58,3 +58,16 @@
      margin-top: 15px;
      font-weight: bold;
  }
+ .out 
+ {
+    border: 3px solid skyblue;
+    padding: 30px;
+   width: 520px;
+   background-color: aqua;
+   margin-left: 30%;
+   margin-top: 15%;
+ }
+ p
+ {
+    text-align: center;
+ }
